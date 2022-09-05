@@ -22,4 +22,12 @@ extension Text {
             .font(.mainFont(size: 30))
             .fontWeight(.heavy)
     }
+
+    func h3Text(_ foregroundColor: Color) -> Text {
+        self
+            .foregroundColor(foregroundColor)
+            .font(.mainFont(size: 20))
+            .fontWeight(.heavy)
+    }
+
 }
