@@ -15,13 +15,43 @@ struct TimeTable: Identifiable {
     var platform: String
 }
 
+struct HakataTimeData {
+
+}
+
+struct NagasakiTimeData {
+    static let kamome_One = 0...423
+    static let kamome_three = 423...463
+    static let kamome_five = 463...509
+    static let kamome_nine = 509...559
+    static let kamome_thirteen = 559...600
+    static let kamome_seventeen = 600...661
+    static let kamome_twenty_one = 661...718
+    static let kamome_twenty_five = 718...776
+    static let kamome_twenty_nine = 776...838
+    static let kamome_thirty_three = 838...896
+    static let kamome_thirty_seven = 896...957
+    static let kamome_forty_one = 957...1018
+    static let kamome_forty_three = 1018...1044
+    static let kamome_forty_five = 1044...1080
+    static let kamome_forty_seven = 1080...1105
+    static let kamome_forty_nine = 1105...1139
+    static let kamome_fifty_one = 1139...1165
+    static let kamome_fifty_three = 1165...1202
+    static let kamome_fifty_five = 1202...1230
+    static let kamome_fifty_seven = 1230...1266
+    static let kamome_sixty_one = 1266...1322
+    static let kamome_sixty_five = 1322...1392
+}
+
 struct ContentView: View {
-    /// @Stateにはprivateをつける
+
     private let dateFormatter = DateFormatter()
     @State private var dateText = ""
     @State private var nowDate = Date()
     @State private var hakataTimeTableListIndex = 0
     @State private var nagasakiTimetableListIndex = 0
+
     @State private var hakataTimeTableList:[TimeTable] = [
         TimeTable(id: 0, name: "みどり\n２号",distination: "博多",departure: "6:52", platform: "のりば10"),
         TimeTable(id: 1, name: "リレー\nかもめ\n４号", distination: "博多",departure: "7:31", platform: "のりば2"),
@@ -225,11 +255,14 @@ struct ContentView: View {
 
                     }) {
                         Text("送り")
+                            .foregroundColor(.white)
                     }
+
                     Button(action: {
 
                     }) {
                         Text("リセット")
+                            .foregroundColor(.white)
                     }
                 }
                 .padding(100)
@@ -254,57 +287,57 @@ struct ContentView: View {
                     let minute = hh + mm
 
                     switch minute {
-                    case 0...423:
+                    case NagasakiTimeData.kamome_One:
                         nagasakiTimetableListIndex = 0
-                    case 423...463:
+                    case NagasakiTimeData.kamome_three:
                         nagasakiTimetableListIndex = 1
-                    case 463...509:
+                    case NagasakiTimeData.kamome_five:
                         nagasakiTimetableListIndex = 2
-                    case 509...559:
+                    case NagasakiTimeData.kamome_nine:
                         nagasakiTimetableListIndex = 3
-                    case 559...600:
+                    case NagasakiTimeData.kamome_thirteen:
                         nagasakiTimetableListIndex = 4
-                    case 600...661:
+                    case NagasakiTimeData.kamome_seventeen:
                         nagasakiTimetableListIndex = 5
-                    case 661...718:
+                    case NagasakiTimeData.kamome_twenty_one:
                         nagasakiTimetableListIndex = 6
-                    case 718...776:
+                    case NagasakiTimeData.kamome_twenty_five:
                         nagasakiTimetableListIndex = 7
-                    case 776...838:
+                    case NagasakiTimeData.kamome_forty_nine:
                         nagasakiTimetableListIndex = 8
-                    case 838...896:
+                    case NagasakiTimeData.kamome_thirty_three:
                         nagasakiTimetableListIndex = 9
-                    case 896...957:
+                    case NagasakiTimeData.kamome_thirty_seven:
                         nagasakiTimetableListIndex = 10
-                    case 957...1018:
+                    case NagasakiTimeData.kamome_forty_one:
                         nagasakiTimetableListIndex = 11
-                    case 1018...1044:
+                    case NagasakiTimeData.kamome_forty_three:
                         nagasakiTimetableListIndex = 12
-                    case 1044...1080:
+                    case NagasakiTimeData.kamome_forty_five:
                         nagasakiTimetableListIndex = 13
-                    case 1080...1105:
+                    case NagasakiTimeData.kamome_forty_seven:
                         nagasakiTimetableListIndex = 14
-                    case 1105...1139:
+                    case NagasakiTimeData.kamome_forty_nine:
                         nagasakiTimetableListIndex = 15
-                    case 1139...1165:
+                    case NagasakiTimeData.kamome_fifty_one:
                         nagasakiTimetableListIndex = 16
-                    case 1165...1202:
+                    case NagasakiTimeData.kamome_fifty_three:
                         nagasakiTimetableListIndex = 17
-                    case 1202...1230:
+                    case NagasakiTimeData.kamome_fifty_five:
                         nagasakiTimetableListIndex = 18
-                    case 1230...1266:
+                    case NagasakiTimeData.kamome_fifty_seven:
                         nagasakiTimetableListIndex = 19
-                    case 1266...1322:
+                    case NagasakiTimeData.kamome_sixty_one:
                         nagasakiTimetableListIndex = 20
-                    case 1322...1392:
+                    case NagasakiTimeData.kamome_sixty_five:
                         nagasakiTimetableListIndex = 21
                     default:
                         break
                     }
+                }
             }
         }
     }
-}
 }
 
 struct MainTextView: View {
@@ -322,6 +355,7 @@ struct MainTextView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .previewInterfaceOrientation(.landscapeRight)
     }
 }
 
