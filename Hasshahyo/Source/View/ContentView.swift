@@ -206,54 +206,73 @@ struct ContentView: View {
                     let minute = hh + mm
 
                     switch minute {
-                    case 0...412:
+                    case HakataTimeData.midori_two:
                         hakataTimeTableListIndex = 0
-                    case 412...451:
+                    case HakataTimeData.relayKamome_four:
                         hakataTimeTableListIndex = 1
-                    case 451...478:
+                    case HakataTimeData.midori_six:
                         hakataTimeTableListIndex = 2
-                    case 478...499:
+                    case HakataTimeData.relaykamome_eight:
                         hakataTimeTableListIndex = 3
-                    case 499...533:
+                    case HakataTimeData.midori_ten:
                         hakataTimeTableListIndex = 4
-                    case 533...546:
+                    case HakataTimeData.relaykamome_twelve:
                         hakataTimeTableListIndex = 5
-                    case 546...591:
+                    case HakataTimeData.midori_fourteen:
                         hakataTimeTableListIndex = 6
-                    case 591...616:
+                    case HakataTimeData.relaykamome_sixteen:
                         hakataTimeTableListIndex = 7
-                    case 616...651:
+                    case HakataTimeData.midori_eighteen:
                         hakataTimeTableListIndex = 8
-                    case 651...677:
+                    case HakataTimeData.relaykamome_twenty:
                         hakataTimeTableListIndex = 9
-                    case 677...689:
+                    case HakataTimeData.midori_HTB_twentytwo:
                         hakataTimeTableListIndex = 10
-                    case 689...736:
+                    case HakataTimeData.relaykamome_twentyfour:
                         hakataTimeTableListIndex = 11
-                    case 736...747:
+                    case HakataTimeData.midori_HTB_twentysix:
                         hakataTimeTableListIndex = 12
-                    case 747...795:
+                    case HakataTimeData.relaykamome_twentyeight:
                         hakataTimeTableListIndex = 13
-                    case 795...809:
+                    case HakataTimeData.midori_HTB_thirty:
                         hakataTimeTableListIndex = 14
-                    case 809...856:
+                    case HakataTimeData.relaykamome_thirtytwo:
                         hakataTimeTableListIndex = 15
-                    case 856...869:
+                    case HakataTimeData.midori_thirtyfour:
                         hakataTimeTableListIndex = 16
-                    case 869...916:
+                    case HakataTimeData.relaykamome_thirtysix:
                         hakataTimeTableListIndex = 17
-                    case 916...928:
+                    case HakataTimeData.midori_HTB_thirtyeight:
                         hakataTimeTableListIndex = 18
-                    case 928...976:
+                    case HakataTimeData.relaykamome_forty:
                         hakataTimeTableListIndex = 19
-                    case 976...1002:
+                    case HakataTimeData.midori_HTB_fortytwo:
                         hakataTimeTableListIndex = 20
-                    case 1002...1033:
+                    case HakataTimeData.relaykamome_fortyfour:
                         hakataTimeTableListIndex = 21
-                    case 1033...1070:
+                    case HakataTimeData.midori_fortysix:
                         hakataTimeTableListIndex = 22
-                    case 1070...1095:
+                    case HakataTimeData.relaykamome_fortyeight:
                         hakataTimeTableListIndex = 23
+                    case HakataTimeData.sanjuuroku:
+                        hakataTimeTableListIndex = 24
+                    case HakataTimeData.midori_fifty:
+                        hakataTimeTableListIndex = 25
+                    case HakataTimeData.relaykamome_fiftytwo:
+                        hakataTimeTableListIndex = 26
+                    case HakataTimeData.midori_fiftyfour:
+                        hakataTimeTableListIndex = 27
+                    case HakataTimeData.relaykamome_fiftysix:
+                        hakataTimeTableListIndex = 28
+                    case HakataTimeData.midori_fiftyeight:
+                        hakataTimeTableListIndex = 29
+                    case HakataTimeData.midori_sixty:
+                        hakataTimeTableListIndex = 30
+                    case HakataTimeData.relaykamome_sixtytwo:
+                        hakataTimeTableListIndex = 31
+                    case HakataTimeData.relaykamome_sixtyfour:
+                        hakataTimeTableListIndex = 32
+
                     default:
                         break
                     }
