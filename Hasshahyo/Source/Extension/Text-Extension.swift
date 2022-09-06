@@ -19,14 +19,14 @@ extension Text {
     func h2Text(_ foregroundColor: Color) -> Text {
         self
             .foregroundColor(foregroundColor)
-            .font(.mainFont(size: 30))
+            .font(.mainFont(size: 28))
             .fontWeight(.heavy)
     }
 
     func h3Text(_ foregroundColor: Color) -> Text {
         self
             .foregroundColor(foregroundColor)
-            .font(.mainFont(size: 20))
+            .font(.mainFont(size: 25))
             .fontWeight(.heavy)
     }
 

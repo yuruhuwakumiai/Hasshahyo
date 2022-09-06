@@ -17,80 +17,71 @@ struct TimeTable: Identifiable {
 
 struct ContentView: View {
     /// @Stateにはprivateをつける
+    private let dateFormatter = DateFormatter()
     @State private var dateText = ""
     @State private var nowDate = Date()
-    @State private var timeTableListIndex = 0
+    @State private var hakataTimeTableListIndex = 0
+    @State private var nagasakiTimetableListIndex = 0
     @State private var hakataTimeTableList:[TimeTable] = [
         TimeTable(id: 0, name: "みどり\n２号",distination: "博多",departure: "6:52", platform: "のりば10"),
-        TimeTable(id: 1, name: "リレー\nかもめ４号", distination: "博多",departure: "7:31", platform: "のりば 2"),
-        TimeTable(id: 2, name: "みどり\n６号", distination: "博多",departure: "7:58", platform: "のりば 2"),
-        TimeTable(id: 3, name: "リレー\nかもめ８号", distination: "博多",departure: "8:19", platform: "のりば10"),
+        TimeTable(id: 1, name: "リレー\nかもめ\n４号", distination: "博多",departure: "7:31", platform: "のりば2"),
+        TimeTable(id: 2, name: "みどり\n６号", distination: "博多",departure: "7:58", platform: "のりば2"),
+        TimeTable(id: 3, name: "リレー\nかもめ\n８号", distination: "博多",departure: "8:19", platform: "のりば10"),
         TimeTable(id: 4, name: "みどり\n１０号", distination: "博多",departure: "8:53", platform: "のりば 2"),
-        TimeTable(id: 5, name: "リレー\nかもめ１２号", distination: "博多",departure: "9:06", platform: "のりば10"),
+        TimeTable(id: 5, name: "リレー\nかもめ\n１２号", distination: "博多",departure: "9:06", platform: "のりば10"),
         TimeTable(id: 6, name: "みどり\n１４号", distination: "博多",departure: "9:51", platform: "のりば10"),
-        TimeTable(id: 7, name: "リレー\nかもめ１６号", distination: "博多",departure: "10:16", platform: "のりば10"),
+        TimeTable(id: 7, name: "リレー\nかもめ\n１６号", distination: "博多",departure: "10:16", platform: "のりば10"),
         TimeTable(id: 8, name: "みどり\n１８号", distination: "博多",departure: "10:51", platform: "のりば 2"),
         TimeTable(id: 9, name: "リレー\nかもめ２０号", distination: "博多",departure: "11:17", platform: "のりば10"),
-        TimeTable(id: 10, name: "みどり\nハウステンボス２２号", distination: "博多",departure: "11:29", platform: "のりば 2"),
-        TimeTable(id: 11, name: "リレー\nかもめ２４号", distination: "博多",departure: "12:16", platform: "のりば10"),
-        TimeTable(id: 12, name: "みどり\nハウステンボス２６号", distination: "博多",departure: "12:27", platform: "のりば　2"),
-        TimeTable(id: 13, name: "リレー\nかもめ２８号", distination: "博多",departure: "13:15", platform: "のりば10"),
-        TimeTable(id: 14, name: "みどり\nハウステンボス３０号", distination: "博多",departure: "13:29", platform: "のりば　2"),
-        TimeTable(id: 15, name: "リレー\nかもめ３２号", distination: "博多",departure: "14:16", platform: "のりば10"),
-        TimeTable(id: 16, name: "みどり\nハウステンボス３４号", distination: "博多",departure: "14:29", platform: "のりば10"),
-        TimeTable(id: 17, name: "リレー\nかもめ３６号", distination: "博多",departure: "15:16", platform: "のりば10"),
-        TimeTable(id: 18, name: "みどり\nハウステンボス３８号", distination: "博多",departure: "15:28", platform: "のりば　2"),
-        TimeTable(id: 19, name: "リレー\nかもめ４０号", distination: "博多",departure: "16:16", platform: "のりば10"),
-        TimeTable(id: 20, name: "みどり\nハウステンボス４２号", distination: "博多",departure: "16:42", platform: "のりば 1"),
-        TimeTable(id: 21, name: "リレー\nかもめ４４号", distination: "博多",departure: "17:13", platform: "のりば10"),
+        TimeTable(id: 10, name: "みどり\nハウステンボス\n２２号", distination: "博多",departure: "11:29", platform: "のりば 2"),
+        TimeTable(id: 11, name: "リレー\nかもめ\n２４号", distination: "博多",departure: "12:16", platform: "のりば10"),
+        TimeTable(id: 12, name: "みどり\nハウステンボス\n２６号", distination: "博多",departure: "12:27", platform: "のりば　2"),
+        TimeTable(id: 13, name: "リレー\nかもめ\n２８号", distination: "博多",departure: "13:15", platform: "のりば10"),
+        TimeTable(id: 14, name: "みどり\nハウステンボス\n３０号", distination: "博多",departure: "13:29", platform: "のりば　2"),
+        TimeTable(id: 15, name: "リレー\nかもめ\n３２号", distination: "博多",departure: "14:16", platform: "のりば10"),
+        TimeTable(id: 16, name: "みどり\nハウステンボス\n３４号", distination: "博多",departure: "14:29", platform: "のりば10"),
+        TimeTable(id: 17, name: "リレー\nかもめ\n３６号", distination: "博多",departure: "15:16", platform: "のりば10"),
+        TimeTable(id: 18, name: "みどり\nハウス\nテンボス\n38号", distination: "博多",departure: "15:28", platform: "のりば 2"),
+        TimeTable(id: 19, name: "リレー\nかもめ\n４０号", distination: "博多",departure: "16:16", platform: "のりば10"),
+        TimeTable(id: 20, name: "みどり\nハウステンボス\n４２号", distination: "博多",departure: "16:42", platform: "のりば 1"),
+        TimeTable(id: 21, name: "リレー\nかもめ\n４４号", distination: "博多",departure: "17:13", platform: "のりば10"),
         TimeTable(id: 22, name: "みどり\n４６号", distination: "博多",departure: "17:50", platform: "のりば10"),
-        TimeTable(id: 23, name: "リレー\nかもめ４８号", distination: "博多",departure: "18:15", platform: "のりば10"),
-        TimeTable(id: 24, name: "３６ぷらす３", distination: "博多",departure: "18:24", platform: "のりば 2"),
+        TimeTable(id: 23, name: "リレー\nかもめ\n４８号", distination: "博多",departure: "18:15", platform: "のりば10"),
+        TimeTable(id: 24, name: "３６\nぷらす３", distination: "博多",departure: "18:24", platform: "のりば 2"),
         TimeTable(id: 25, name: "みどり\n５０号", distination: "博多",departure: "18:48", platform: "のりば10"),
-        TimeTable(id: 26, name: "リレー\nかもめ５２号", distination: "博多",departure: "19:15", platform: "のりば10"),
+        TimeTable(id: 26, name: "リレー\nかもめ\n５２号", distination: "博多",departure: "19:15", platform: "のりば10"),
         TimeTable(id: 27, name: "みどり\n５４号", distination: "博多",departure: "19:51", platform: "のりば10"),
-        TimeTable(id: 28, name: "リレー\nかもめ５６号", distination: "博多",departure: "20:18", platform: "のりば10"),
+        TimeTable(id: 28, name: "リレー\nかもめ\n５６号", distination: "博多",departure: "20:18", platform: "のりば10"),
         TimeTable(id: 29, name: "みどり\n５８号", distination: "博多",departure: "20:57", platform: "のりば10"),
         TimeTable(id: 30, name: "みどり\n６０号", distination: "博多",departure: "21:31", platform: "のりば10"),
-        TimeTable(id: 31, name: "リレー\nかもめ６２号", distination: "博多",departure: "21:49", platform: "のりば10"),
-        TimeTable(id: 32, name: "リレー\nかもめ６４号", distination: "門司港",departure: "22:43", platform: "のりば10"),
+        TimeTable(id: 31, name: "リレー\nかもめ\n６２号", distination: "博多",departure: "21:49", platform: "のりば10"),
+        TimeTable(id: 32, name: "リレー\nかもめ\n６４号", distination: "門司港",departure: "22:43", platform: "のりば10"),
     ]
 
     @State private var nagasakiTimeTableList:[TimeTable] = [
-        TimeTable(id: 0, name: "かもめ\n１号",distination: "長崎",departure: "8:00", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n３号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 2, name: "かもめ\n５号", distination: "長崎",departure: "9:00", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n９号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n１３号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n１７号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n２１号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n２５号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n２９号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n３３号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n３７号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n４１号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n４３号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n４５号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n４７号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n４９号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n５１号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n５３号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n５５号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n５７号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n６１号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n６５号", distination: "長崎",departure: "8:30", platform: "のりば11")
+        TimeTable(id: 0, name: "かもめ\n１号",distination: "長崎",departure: "7:03", platform: "のりば11"),
+        TimeTable(id: 1, name: "かもめ\n６５号", distination: "長崎",departure: "7:43", platform: "のりば11"),
+        TimeTable(id: 2, name: "かもめ\n３号", distination: "長崎",departure: "8:29", platform: "のりば11"),
+        TimeTable(id: 3, name: "かもめ\n５号", distination: "長崎",departure: "9:19", platform: "のりば11"),
+        TimeTable(id: 4, name: "かもめ\n９号", distination: "長崎",departure: "10:00", platform: "のりば11"),
+        TimeTable(id: 5, name: "かもめ\n１３号", distination: "長崎",departure: "11:01", platform: "のりば11"),
+        TimeTable(id: 6, name: "かもめ\n１７号", distination: "長崎",departure: "11:58", platform: "のりば11"),
+        TimeTable(id: 7, name: "かもめ\n２１号", distination: "長崎",departure: "12:56", platform: "のりば11"),
+        TimeTable(id: 8, name: "かもめ\n２５号", distination: "長崎",departure: "13:58", platform: "のりば11"),
+        TimeTable(id: 9, name: "かもめ\n２９号", distination: "長崎",departure: "14:56", platform: "のりば11"),
+        TimeTable(id: 10, name: "かもめ\n３３号", distination: "長崎",departure: "15:57", platform: "のりば11"),
+        TimeTable(id: 11, name: "かもめ\n３７号", distination: "長崎",departure: "16:58", platform: "のりば11"),
+        TimeTable(id: 12, name: "かもめ\n４１号", distination: "長崎",departure: "17:24", platform: "のりば11"),
+        TimeTable(id: 13, name: "かもめ\n４３号", distination: "長崎",departure: "18:00", platform: "のりば11"),
+        TimeTable(id: 14, name: "かもめ\n４５号", distination: "長崎",departure: "18:25", platform: "のりば11"),
+        TimeTable(id: 15, name: "かもめ\n４７号", distination: "長崎",departure: "18:59", platform: "のりば11"),
+        TimeTable(id: 16, name: "かもめ\n４９号", distination: "長崎",departure: "19:25", platform: "のりば11"),
+        TimeTable(id: 17, name: "かもめ\n５１号", distination: "長崎",departure: "20:02", platform: "のりば11"),
+        TimeTable(id: 18, name: "かもめ\n５３号", distination: "長崎",departure: "20:30", platform: "のりば11"),
+        TimeTable(id: 19, name: "かもめ\n５５号", distination: "長崎",departure: "21:06", platform: "のりば11"),
+        TimeTable(id: 20, name: "かもめ\n５７号", distination: "長崎",departure: "22:02", platform: "のりば11"),
+        TimeTable(id: 21, name: "かもめ\n６１号", distination: "長崎",departure: "23:12", platform: "のりば11")
     ]
-
-    @State var isOnce1 = true
-    @State var isOnce2 = true
-    @State var isOnce3 = true
-    @State var isOnce4 = true
-    @State var isOnce5 = true
-    @State var isOnce6 = true
-    @State var isOnce7 = true
-    @State var isOnce8 = true
-
-    private let dateFormatter = DateFormatter()
 
     var body: some View {
         HStack {
@@ -99,19 +90,19 @@ struct ContentView: View {
                 MainTextView(text: "SaseboLine")
                 MainTextView(text: "博多方面")
                 MainTextView(text: dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText, isHeavy: false)
-                List(makeHakataTimeTableArray()) { timeTableList in
+                List(hakataTimeTableListIndex..<hakataTimeTableList.count, id: \.self) { index in
                     HStack {
-                        Text(timeTableList.name)
-                            .h2Text(Color("train_red"))
+                        Text(hakataTimeTableList[index].name)
+                            .h3Text(Color("train_red"))
                         Spacer()
-                        Text(timeTableList.distination)
+                        Text(hakataTimeTableList[index].distination)
                             .h1Text(Color("distination_orange"))
                         Spacer()
-                        Text(timeTableList.departure)
+                        Text(hakataTimeTableList[index].departure)
                             .h1Text(Color("time_green"))
                         Spacer()
-                        Text(timeTableList.platform)
-                            .h2Text(Color("distination_orange"))
+                        Text(hakataTimeTableList[index].platform)
+                            .h3Text(Color("distination_orange"))
                     }
                     .listRowBackground(Color.black)
                     .frame(height : 200)
@@ -124,7 +115,7 @@ struct ContentView: View {
                             .foregroundColor(.white)
                     }
                     Button(action: {
-                        hakataResetTimeTable()
+
                     }) {
                         Text("リセット")
                             .foregroundColor(.white)
@@ -137,14 +128,73 @@ struct ContentView: View {
                 UITableView.appearance().backgroundColor = .clear
                 /// initは使わない
                 dateFormatter.dateFormat = "HH:mm"
+                let dateFormatterHH = DateFormatter()
+                let dateFormattermm = DateFormatter()
+                dateFormatterHH.dateFormat = "HH"
+                dateFormattermm.dateFormat = "mm"
+                dateFormatterHH.locale = Locale(identifier: "ja_jp")
+                dateFormattermm.locale = Locale(identifier: "ja_jp")
                 dateFormatter.locale = Locale(identifier: "ja_jp")
-
                 /// .onAppearは一つにまとめる。
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
                     self.nowDate = Date()
                     dateText = "\(dateFormatter.string(from: nowDate))"
-                    // Listの更新
-//                    changeTimeTable()
+                    let hh = Int(dateFormatterHH.string(from: nowDate))!*60
+                    let mm = Int(dateFormattermm.string(from: nowDate))!
+                    let minute = hh + mm
+
+                    switch minute {
+                    case 0...412:
+                        hakataTimeTableListIndex = 0
+                    case 412...451:
+                        hakataTimeTableListIndex = 1
+                    case 451...478:
+                        hakataTimeTableListIndex = 2
+                    case 478...499:
+                        hakataTimeTableListIndex = 3
+                    case 499...533:
+                        hakataTimeTableListIndex = 4
+                    case 533...546:
+                        hakataTimeTableListIndex = 5
+                    case 546...591:
+                        hakataTimeTableListIndex = 6
+                    case 591...616:
+                        hakataTimeTableListIndex = 7
+                    case 616...651:
+                        hakataTimeTableListIndex = 8
+                    case 651...677:
+                        hakataTimeTableListIndex = 9
+                    case 677...689:
+                        hakataTimeTableListIndex = 10
+                    case 689...736:
+                        hakataTimeTableListIndex = 11
+                    case 736...747:
+                        hakataTimeTableListIndex = 12
+                    case 747...795:
+                        hakataTimeTableListIndex = 13
+                    case 795...809:
+                        hakataTimeTableListIndex = 14
+                    case 809...856:
+                        hakataTimeTableListIndex = 15
+                    case 856...869:
+                        hakataTimeTableListIndex = 16
+                    case 869...916:
+                        hakataTimeTableListIndex = 17
+                    case 916...928:
+                        hakataTimeTableListIndex = 18
+                    case 928...976:
+                        hakataTimeTableListIndex = 19
+                    case 976...1002:
+                        hakataTimeTableListIndex = 20
+                    case 1002...1033:
+                        hakataTimeTableListIndex = 21
+                    case 1033...1070:
+                        hakataTimeTableListIndex = 22
+                    case 1070...1095:
+                        hakataTimeTableListIndex = 23
+                    default:
+                        break
+                    }
                 }
             }
 
@@ -153,31 +203,31 @@ struct ContentView: View {
                 MainTextView(text: "NishiKyushuShinkansen")
                 MainTextView(text: "長崎方面")
                 MainTextView(text: dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText, isHeavy: false)
-                List(nagasakiTimeTableList) { timeTableList in
+                List(nagasakiTimetableListIndex..<nagasakiTimeTableList.count, id: \.self) { index in
                     HStack {
-                        Text(timeTableList.name)
-                            .h2Text(Color("train_red"))
+                        Text(nagasakiTimeTableList[index].name)
+                            .h3Text(Color("train_red"))
                         Spacer()
-                        Text(timeTableList.distination)
+                        Text(nagasakiTimeTableList[index].distination)
                             .h1Text(Color("distination_orange"))
                         Spacer()
-                        Text(timeTableList.departure)
+                        Text(nagasakiTimeTableList[index].departure)
                             .h1Text(Color("time_green"))
                         Spacer()
-                        Text(timeTableList.platform)
-                            .h2Text(Color("distination_orange"))
+                        Text(nagasakiTimeTableList[index].platform)
+                            .h3Text(Color("distination_orange"))
                     }
                     .listRowBackground(Color.black)
                     .frame(height : 200)
                 }
                 HStack {
                     Button(action: {
-                        nagasakiNextStepTimeTable()
+
                     }) {
                         Text("送り")
                     }
                     Button(action: {
-                        nagasakiResetTimetable()
+
                     }) {
                         Text("リセット")
                     }
@@ -187,103 +237,74 @@ struct ContentView: View {
             .background(Color("main_blue"))
             .onAppear {
                 UITableView.appearance().backgroundColor = .clear
-                /// initは使わない
                 dateFormatter.dateFormat = "HH:mm"
+                let dateFormatterHH = DateFormatter()
+                let dateFormattermm = DateFormatter()
+                dateFormatterHH.dateFormat = "HH"
+                dateFormattermm.dateFormat = "mm"
+                dateFormatterHH.locale = Locale(identifier: "ja_jp")
+                dateFormattermm.locale = Locale(identifier: "ja_jp")
                 dateFormatter.locale = Locale(identifier: "ja_jp")
-
                 /// .onAppearは一つにまとめる。
                 Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
                     self.nowDate = Date()
                     dateText = "\(dateFormatter.string(from: nowDate))"
-                    // Listの更新 後からトグルにする これのオンオフで自動手動
-//                    changeTimeTable()
-                }
+                    let hh = Int(dateFormatterHH.string(from: nowDate))!*60
+                    let mm = Int(dateFormattermm.string(from: nowDate))!
+                    let minute = hh + mm
+
+                    switch minute {
+                    case 0...423:
+                        nagasakiTimetableListIndex = 0
+                    case 423...463:
+                        nagasakiTimetableListIndex = 1
+                    case 463...509:
+                        nagasakiTimetableListIndex = 2
+                    case 509...559:
+                        nagasakiTimetableListIndex = 3
+                    case 559...600:
+                        nagasakiTimetableListIndex = 4
+                    case 600...661:
+                        nagasakiTimetableListIndex = 5
+                    case 661...718:
+                        nagasakiTimetableListIndex = 6
+                    case 718...776:
+                        nagasakiTimetableListIndex = 7
+                    case 776...838:
+                        nagasakiTimetableListIndex = 8
+                    case 838...896:
+                        nagasakiTimetableListIndex = 9
+                    case 896...957:
+                        nagasakiTimetableListIndex = 10
+                    case 957...1018:
+                        nagasakiTimetableListIndex = 11
+                    case 1018...1044:
+                        nagasakiTimetableListIndex = 12
+                    case 1044...1080:
+                        nagasakiTimetableListIndex = 13
+                    case 1080...1105:
+                        nagasakiTimetableListIndex = 14
+                    case 1105...1139:
+                        nagasakiTimetableListIndex = 15
+                    case 1139...1165:
+                        nagasakiTimetableListIndex = 16
+                    case 1165...1202:
+                        nagasakiTimetableListIndex = 17
+                    case 1202...1230:
+                        nagasakiTimetableListIndex = 18
+                    case 1230...1266:
+                        nagasakiTimetableListIndex = 19
+                    case 1266...1322:
+                        nagasakiTimetableListIndex = 20
+                    case 1322...1392:
+                        nagasakiTimetableListIndex = 21
+                    default:
+                        break
+                    }
             }
         }
     }
-    // 簡潔に書きたい
-    func changeTimeTable() {
-        if dateText == "22:40" && isOnce1 == true {
-            hakataTimeTableList.remove(at: 0)
-            isOnce1 = false
-        }
-        if dateText == "21:41" && isOnce2 == true {
-            hakataTimeTableList.remove(at: 0)
-            isOnce2 = false
-        }
-        if dateText == "21:42" && isOnce3 == true {
-            hakataTimeTableList.remove(at: 0)
-            isOnce3 = false
-        }
-        if dateText == "21:43" && isOnce4 == true {
-            hakataTimeTableList.remove(at: 0)
-            isOnce4 = false
-        }
-        if dateText == "21:44" && isOnce5 == true {
-            hakataTimeTableList.remove(at: 0)
-            isOnce5 = false
-        }
-        if dateText == "21:45" && isOnce6 == true {
-            hakataTimeTableList.remove(at: 0)
-            isOnce6 = false
-        }
-    }
-
-    func hakataNextStepTimeTable() {
-        guard hakataTimeTableList.count != 0 else { return }
-        hakataTimeTableList.remove(at: 0)
-    }
-
-    func nagasakiNextStepTimeTable() {
-        guard nagasakiTimeTableList.count != 0 else { return }
-        nagasakiTimeTableList.remove(at: 0)
-    }
-
-    func hakataResetTimeTable() {
-    }
-
-    func nagasakiResetTimetable() {
-        //        nagasakiTimeTableList.removeAll()
-        //        nagasakiTimeTableList += [
-        //            TimeTable(id: 0, name: "かもめ\n２号",distination: "長崎",departure: "8:00", platform: "のりば11"),
-        //            TimeTable(id: 1, name: "かもめ\n４号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-        //            TimeTable(id: 2, name: "かもめ\n６号", distination: "長崎",departure: "9:00", platform: "のりば11")
-        //        ]
-    }
-
-    func makeHakataTimeTableArray() -> Array<TimeTable> {
-
-        if dateText <= "13:00" {
-            hakataTimeTableList.remove(at: 0)
-        }
-        if dateText <= "14:00" {
-            hakataTimeTableList.removeSubrange(0...1)
-        }
-        if dateText <= "17:00" {
-            hakataTimeTableList.removeSubrange(0...2)
-        }
-
-        return hakataTimeTableList
-    }
-
-    func makeNagasakiTimeTableArray() -> Array<TimeTable> {
-         var nagasakiTimeTableList:[TimeTable] = [
-            TimeTable(id: 0, name: "かもめ\n２号",distination: "長崎",departure: "8:00", platform: "のりば11"),
-            TimeTable(id: 1, name: "かもめ\n４号", distination: "長崎",departure: "8:30", platform: "のりば11"),
-            TimeTable(id: 2, name: "かもめ\n６号", distination: "長崎",departure: "9:00", platform: "のりば11")
-        ]
-
-        if dateText <= "12:00" {
-            nagasakiTimeTableList.remove(at: 0)
-        }
-        if dateText <= "12:10" {
-            nagasakiTimeTableList.removeSubrange(0...1)
-        }
-        if dateText <= "16:30" {
-            nagasakiTimeTableList.removeSubrange(0...1)
-        }
-        return nagasakiTimeTableList
-    }
+}
 }
 
 struct MainTextView: View {
