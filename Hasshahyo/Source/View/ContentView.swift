@@ -15,18 +15,7 @@ struct TimeTable: Identifiable {
     var platform: String
 }
 
-// 佐世保線ローカル作成
-struct SaseboUpTimeData {
-
-}
-
 struct ContentView: View {
-
-    private let dateFormatter = DateFormatter()
-    @State private var dateText = ""
-    @State private var nowDate = Date()
-    @State private var hakataTimeTableListIndex = 0
-    @State private var nagasakiTimetableListIndex = 0
 
     @State private var hakataTimeTableList:[TimeTable] = [
         TimeTable(id: 0, name: "みどり\n２号",distination: "博多",departure: "6:52", platform: "のりば10"),
@@ -45,7 +34,7 @@ struct ContentView: View {
         TimeTable(id: 13, name: "リレー\nかもめ\n２８号", distination: "博多",departure: "13:15", platform: "のりば10"),
         TimeTable(id: 14, name: "みどり\nハウステンボス\n３０号", distination: "博多",departure: "13:29", platform: "のりば　2"),
         TimeTable(id: 15, name: "リレー\nかもめ\n３２号", distination: "博多",departure: "14:16", platform: "のりば10"),
-        TimeTable(id: 16, name: "みどり\nハウステンボス\n３４号", distination: "博多",departure: "14:29", platform: "のりば10"),
+        TimeTable(id: 16, name: "みどり\nハウステンボス\n３４号", distination: "博多",departure: "14:29", platform: "のりば 2"),
         TimeTable(id: 17, name: "リレー\nかもめ\n３６号", distination: "博多",departure: "15:16", platform: "のりば10"),
         TimeTable(id: 18, name: "みどり\nハウス\nテンボス\n38号", distination: "博多",departure: "15:28", platform: "のりば 2"),
         TimeTable(id: 19, name: "リレー\nかもめ\n４０号", distination: "博多",departure: "16:16", platform: "のりば10"),
@@ -63,7 +52,6 @@ struct ContentView: View {
         TimeTable(id: 31, name: "リレー\nかもめ\n６２号", distination: "博多",departure: "21:49", platform: "のりば10"),
         TimeTable(id: 32, name: "リレー\nかもめ\n６４号", distination: "門司港",departure: "22:43", platform: "のりば10"),
     ]
-
     @State private var nagasakiTimeTableList:[TimeTable] = [
         TimeTable(id: 0, name: "かもめ\n１号",distination: "長崎",departure: "7:03", platform: "のりば11"),
         TimeTable(id: 1, name: "かもめ\n６５号", distination: "長崎",departure: "7:43", platform: "のりば11"),
@@ -88,27 +76,46 @@ struct ContentView: View {
         TimeTable(id: 20, name: "かもめ\n５７号", distination: "長崎",departure: "22:02", platform: "のりば11"),
         TimeTable(id: 21, name: "かもめ\n６１号", distination: "長崎",departure: "23:12", platform: "のりば11")
     ]
+    @State private var hakataTwoHomeTimeTableList:[TimeTable] = [
+        TimeTable(id: 2, name: "みどり\n６号", distination: "博多",departure: "7:58", platform: "のりば2"),
+        TimeTable(id: 4, name: "みどり\n１０号", distination: "博多",departure: "8:53", platform: "のりば 2"),
+        TimeTable(id: 8, name: "みどり\n１８号", distination: "博多",departure: "10:51", platform: "のりば 2"),
+        TimeTable(id: 10, name: "みどり\nハウステンボス\n２２号", distination: "博多",departure: "11:29", platform: "のりば 2"),
+        TimeTable(id: 12, name: "みどり\nハウステンボス\n２６号", distination: "博多",departure: "12:27", platform: "のりば　2"),
+        TimeTable(id: 14, name: "みどり\nハウステンボス\n３０号", distination: "博多",departure: "13:29", platform: "のりば　2"),
+        TimeTable(id: 16, name: "みどり\nハウステンボス\n３４号", distination: "博多",departure: "14:29", platform: "のりば10"),
+        TimeTable(id: 18, name: "みどり\nハウス\nテンボス\n38号", distination: "博多",departure: "15:28", platform: "のりば 2"),
+        TimeTable(id: 30, name: "みどり\n６０号", distination: "博多",departure: "21:31", platform: "のりば10")
+    ]
 
+    @State private var dateText = ""
+    @State private var nowDate = Date()
+    @State private var hakataTimeTableListIndex = 0
+    @State private var nagasakiTimetableListIndex = 0
+    @State private var hakataTwoPlatHomeListIndex = 0
+
+    private let dateFormatter = DateFormatter()
+    
     var body: some View {
         HStack {
             VStack {
-                MainTextView(text: "佐世保線")
-                MainTextView(text: "SaseboLine")
-                MainTextView(text: "博多方面")
-                MainTextView(text: dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText, isHeavy: false)
-                List(hakataTimeTableListIndex..<hakataTimeTableList.count, id: \.self) { index in
+                MainTextView(text: "次に「在来線のりば」から発車する特急みどり号のご案内", color: .red)
+                MainTextView(text: "佐世保線", color: .white)
+                MainTextView(text: "SaseboLine", color: .white)
+//                MainTextView(text: dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText, isHeavy: false)
+                List(hakataTwoPlatHomeListIndex..<hakataTwoHomeTimeTableList.count, id: \.self) { index in
                     HStack {
-                        Text(hakataTimeTableList[index].name)
-                            .h3Text(Color("train_red"))
+                        Text(hakataTwoHomeTimeTableList[index].name)
+                            .h2Text(Color.train_red)
                         Spacer()
-                        Text(hakataTimeTableList[index].distination)
-                            .h1Text(Color("distination_orange"))
+                        Text(hakataTwoHomeTimeTableList[index].distination)
+                            .h1Text(Color.distination_orange)
                         Spacer()
-                        Text(hakataTimeTableList[index].departure)
-                            .h1Text(Color("time_green"))
+                        Text(hakataTwoHomeTimeTableList[index].departure)
+                            .h1Text(Color.time_green)
                         Spacer()
-                        Text(hakataTimeTableList[index].platform)
-                            .h3Text(Color("distination_orange"))
+                        Text(hakataTwoHomeTimeTableList[index].platform)
+                            .h1Text(Color.distination_orange)
                     }
                     .listRowBackground(Color.black)
                     .frame(height : 200)
@@ -129,7 +136,7 @@ struct ContentView: View {
                 }
                 .padding(100)
             }
-            .background(Color("main_blue"))
+            .background(Color.main_blue)
             .onAppear {
                 UITableView.appearance().backgroundColor = .clear
                 /// initは使わない
@@ -150,199 +157,223 @@ struct ContentView: View {
                     let minute = hh + mm
 
                     switch minute {
-                    case HakataTimeData.midori_two:
-                        hakataTimeTableListIndex = 0
-                    case HakataTimeData.relayKamome_four:
-                        hakataTimeTableListIndex = 1
                     case HakataTimeData.midori_six:
-                        hakataTimeTableListIndex = 2
-                    case HakataTimeData.relaykamome_eight:
-                        hakataTimeTableListIndex = 3
+                        hakataTwoPlatHomeListIndex = 0
                     case HakataTimeData.midori_ten:
-                        hakataTimeTableListIndex = 4
-                    case HakataTimeData.relaykamome_twelve:
-                        hakataTimeTableListIndex = 5
-                    case HakataTimeData.midori_fourteen:
-                        hakataTimeTableListIndex = 6
-                    case HakataTimeData.relaykamome_sixteen:
-                        hakataTimeTableListIndex = 7
+                        hakataTwoPlatHomeListIndex = 1
                     case HakataTimeData.midori_eighteen:
-                        hakataTimeTableListIndex = 8
-                    case HakataTimeData.relaykamome_twenty:
-                        hakataTimeTableListIndex = 9
+                        hakataTwoPlatHomeListIndex = 2
                     case HakataTimeData.midori_HTB_twentytwo:
-                        hakataTimeTableListIndex = 10
-                    case HakataTimeData.relaykamome_twentyfour:
-                        hakataTimeTableListIndex = 11
+                        hakataTwoPlatHomeListIndex = 3
                     case HakataTimeData.midori_HTB_twentysix:
-                        hakataTimeTableListIndex = 12
-                    case HakataTimeData.relaykamome_twentyeight:
-                        hakataTimeTableListIndex = 13
+                        hakataTwoPlatHomeListIndex = 4
                     case HakataTimeData.midori_HTB_thirty:
-                        hakataTimeTableListIndex = 14
-                    case HakataTimeData.relaykamome_thirtytwo:
-                        hakataTimeTableListIndex = 15
+                        hakataTwoPlatHomeListIndex = 5
                     case HakataTimeData.midori_thirtyfour:
-                        hakataTimeTableListIndex = 16
-                    case HakataTimeData.relaykamome_thirtysix:
-                        hakataTimeTableListIndex = 17
+                        hakataTwoPlatHomeListIndex = 6
                     case HakataTimeData.midori_HTB_thirtyeight:
-                        hakataTimeTableListIndex = 18
-                    case HakataTimeData.relaykamome_forty:
-                        hakataTimeTableListIndex = 19
-                    case HakataTimeData.midori_HTB_fortytwo:
-                        hakataTimeTableListIndex = 20
-                    case HakataTimeData.relaykamome_fortyfour:
-                        hakataTimeTableListIndex = 21
-                    case HakataTimeData.midori_fortysix:
-                        hakataTimeTableListIndex = 22
-                    case HakataTimeData.relaykamome_fortyeight:
-                        hakataTimeTableListIndex = 23
-                    case HakataTimeData.sanjuuroku:
-                        hakataTimeTableListIndex = 24
-                    case HakataTimeData.midori_fifty:
-                        hakataTimeTableListIndex = 25
-                    case HakataTimeData.relaykamome_fiftytwo:
-                        hakataTimeTableListIndex = 26
-                    case HakataTimeData.midori_fiftyfour:
-                        hakataTimeTableListIndex = 27
-                    case HakataTimeData.relaykamome_fiftysix:
-                        hakataTimeTableListIndex = 28
-                    case HakataTimeData.midori_fiftyeight:
-                        hakataTimeTableListIndex = 29
+                        hakataTwoPlatHomeListIndex = 7
                     case HakataTimeData.midori_sixty:
-                        hakataTimeTableListIndex = 30
-                    case HakataTimeData.relaykamome_sixtytwo:
-                        hakataTimeTableListIndex = 31
-                    case HakataTimeData.relaykamome_sixtyfour:
-                        hakataTimeTableListIndex = 32
-
+                        hakataTwoPlatHomeListIndex = 8
                     default:
                         break
                     }
+
+//                    switch minute {
+//                    case HakataTimeData.midori_two:
+//                        hakataTimeTableListIndex = 0
+//                    case HakataTimeData.relayKamome_four:
+//                        hakataTimeTableListIndex = 1
+//                    case HakataTimeData.midori_six:
+//                        hakataTimeTableListIndex = 2
+//                    case HakataTimeData.relaykamome_eight:
+//                        hakataTimeTableListIndex = 3
+//                    case HakataTimeData.midori_ten:
+//                        hakataTimeTableListIndex = 4
+//                    case HakataTimeData.relaykamome_twelve:
+//                        hakataTimeTableListIndex = 5
+//                    case HakataTimeData.midori_fourteen:
+//                        hakataTimeTableListIndex = 6
+//                    case HakataTimeData.relaykamome_sixteen:
+//                        hakataTimeTableListIndex = 7
+//                    case HakataTimeData.midori_eighteen:
+//                        hakataTimeTableListIndex = 8
+//                    case HakataTimeData.relaykamome_twenty:
+//                        hakataTimeTableListIndex = 9
+//                    case HakataTimeData.midori_HTB_twentytwo:
+//                        hakataTimeTableListIndex = 10
+//                    case HakataTimeData.relaykamome_twentyfour:
+//                        hakataTimeTableListIndex = 11
+//                    case HakataTimeData.midori_HTB_twentysix:
+//                        hakataTimeTableListIndex = 12
+//                    case HakataTimeData.relaykamome_twentyeight:
+//                        hakataTimeTableListIndex = 13
+//                    case HakataTimeData.midori_HTB_thirty:
+//                        hakataTimeTableListIndex = 14
+//                    case HakataTimeData.relaykamome_thirtytwo:
+//                        hakataTimeTableListIndex = 15
+//                    case HakataTimeData.midori_thirtyfour:
+//                        hakataTimeTableListIndex = 16
+//                    case HakataTimeData.relaykamome_thirtysix:
+//                        hakataTimeTableListIndex = 17
+//                    case HakataTimeData.midori_HTB_thirtyeight:
+//                        hakataTimeTableListIndex = 18
+//                    case HakataTimeData.relaykamome_forty:
+//                        hakataTimeTableListIndex = 19
+//                    case HakataTimeData.midori_HTB_fortytwo:
+//                        hakataTimeTableListIndex = 20
+//                    case HakataTimeData.relaykamome_fortyfour:
+//                        hakataTimeTableListIndex = 21
+//                    case HakataTimeData.midori_fortysix:
+//                        hakataTimeTableListIndex = 22
+//                    case HakataTimeData.relaykamome_fortyeight:
+//                        hakataTimeTableListIndex = 23
+//                    case HakataTimeData.sanjuuroku:
+//                        hakataTimeTableListIndex = 24
+//                    case HakataTimeData.midori_fifty:
+//                        hakataTimeTableListIndex = 25
+//                    case HakataTimeData.relaykamome_fiftytwo:
+//                        hakataTimeTableListIndex = 26
+//                    case HakataTimeData.midori_fiftyfour:
+//                        hakataTimeTableListIndex = 27
+//                    case HakataTimeData.relaykamome_fiftysix:
+//                        hakataTimeTableListIndex = 28
+//                    case HakataTimeData.midori_fiftyeight:
+//                        hakataTimeTableListIndex = 29
+//                    case HakataTimeData.midori_sixty:
+//                        hakataTimeTableListIndex = 30
+//                    case HakataTimeData.relaykamome_sixtytwo:
+//                        hakataTimeTableListIndex = 31
+//                    case HakataTimeData.relaykamome_sixtyfour:
+//                        hakataTimeTableListIndex = 32
+//
+//                    default:
+//                        break
+//                    }
                 }
             }
-
-            VStack {
-                MainTextView(text: "西九州新幹線")
-                MainTextView(text: "NishiKyushuShinkansen")
-                MainTextView(text: "長崎方面")
-                MainTextView(text: dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText, isHeavy: false)
-                List(nagasakiTimetableListIndex..<nagasakiTimeTableList.count, id: \.self) { index in
-                    HStack {
-                        Text(nagasakiTimeTableList[index].name)
-                            .h3Text(Color("train_red"))
-                        Spacer()
-                        Text(nagasakiTimeTableList[index].distination)
-                            .h1Text(Color("distination_orange"))
-                        Spacer()
-                        Text(nagasakiTimeTableList[index].departure)
-                            .h1Text(Color("time_green"))
-                        Spacer()
-                        Text(nagasakiTimeTableList[index].platform)
-                            .h3Text(Color("distination_orange"))
-                    }
-                    .listRowBackground(Color.black)
-                    .frame(height : 200)
-                }
-                HStack {
-                    Button(action: {
-
-                    }) {
-                        Text("送り")
-                            .foregroundColor(.white)
-                    }
-
-                    Button(action: {
-
-                    }) {
-                        Text("リセット")
-                            .foregroundColor(.white)
-                    }
-                }
-                .padding(100)
-            }
-            .background(Color("main_blue"))
-            .onAppear {
-                UITableView.appearance().backgroundColor = .clear
-                dateFormatter.dateFormat = "HH:mm"
-                let dateFormatterHH = DateFormatter()
-                let dateFormattermm = DateFormatter()
-                dateFormatterHH.dateFormat = "HH"
-                dateFormattermm.dateFormat = "mm"
-                dateFormatterHH.locale = Locale(identifier: "ja_jp")
-                dateFormattermm.locale = Locale(identifier: "ja_jp")
-                dateFormatter.locale = Locale(identifier: "ja_jp")
-                /// .onAppearは一つにまとめる。
-                Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                    self.nowDate = Date()
-                    dateText = "\(dateFormatter.string(from: nowDate))"
-                    let hh = Int(dateFormatterHH.string(from: nowDate))!*60
-                    let mm = Int(dateFormattermm.string(from: nowDate))!
-                    let minute = hh + mm
-
-                    switch minute {
-                    case NagasakiTimeData.kamome_One:
-                        nagasakiTimetableListIndex = 0
-                    case NagasakiTimeData.kamome_three:
-                        nagasakiTimetableListIndex = 1
-                    case NagasakiTimeData.kamome_five:
-                        nagasakiTimetableListIndex = 2
-                    case NagasakiTimeData.kamome_nine:
-                        nagasakiTimetableListIndex = 3
-                    case NagasakiTimeData.kamome_thirteen:
-                        nagasakiTimetableListIndex = 4
-                    case NagasakiTimeData.kamome_seventeen:
-                        nagasakiTimetableListIndex = 5
-                    case NagasakiTimeData.kamome_twenty_one:
-                        nagasakiTimetableListIndex = 6
-                    case NagasakiTimeData.kamome_twenty_five:
-                        nagasakiTimetableListIndex = 7
-                    case NagasakiTimeData.kamome_forty_nine:
-                        nagasakiTimetableListIndex = 8
-                    case NagasakiTimeData.kamome_thirty_three:
-                        nagasakiTimetableListIndex = 9
-                    case NagasakiTimeData.kamome_thirty_seven:
-                        nagasakiTimetableListIndex = 10
-                    case NagasakiTimeData.kamome_forty_one:
-                        nagasakiTimetableListIndex = 11
-                    case NagasakiTimeData.kamome_forty_three:
-                        nagasakiTimetableListIndex = 12
-                    case NagasakiTimeData.kamome_forty_five:
-                        nagasakiTimetableListIndex = 13
-                    case NagasakiTimeData.kamome_forty_seven:
-                        nagasakiTimetableListIndex = 14
-                    case NagasakiTimeData.kamome_forty_nine:
-                        nagasakiTimetableListIndex = 15
-                    case NagasakiTimeData.kamome_fifty_one:
-                        nagasakiTimetableListIndex = 16
-                    case NagasakiTimeData.kamome_fifty_three:
-                        nagasakiTimetableListIndex = 17
-                    case NagasakiTimeData.kamome_fifty_five:
-                        nagasakiTimetableListIndex = 18
-                    case NagasakiTimeData.kamome_fifty_seven:
-                        nagasakiTimetableListIndex = 19
-                    case NagasakiTimeData.kamome_sixty_one:
-                        nagasakiTimetableListIndex = 20
-                    case NagasakiTimeData.kamome_sixty_five:
-                        nagasakiTimetableListIndex = 21
-                    default:
-                        break
-                    }
-                }
-            }
+//
+//            VStack {
+//                MainTextView(text: "西九州新幹線")
+//                MainTextView(text: "NishiKyushuShinkansen")
+//                MainTextView(text: "長崎方面")
+//                MainTextView(text: dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText, isHeavy: false)
+//                List(nagasakiTimetableListIndex..<nagasakiTimeTableList.count, id: \.self) { index in
+//                    HStack {
+//                        Text(nagasakiTimeTableList[index].name)
+//                            .h3Text(Color.train_red)
+//                        Spacer()
+//                        Text(nagasakiTimeTableList[index].distination)
+//                            .h1Text(Color.distination_orange)
+//                        Spacer()
+//                        Text(nagasakiTimeTableList[index].departure)
+//                            .h1Text(Color.time_green)
+//                        Spacer()
+//                        Text(nagasakiTimeTableList[index].platform)
+//                            .h3Text(Color.distination_orange)
+//                    }
+//                    .listRowBackground(Color.black)
+//                    .frame(height : 200)
+//                }
+//                HStack {
+//                    Button(action: {
+//
+//                    }) {
+//                        Text("送り")
+//                            .foregroundColor(.white)
+//                    }
+//
+//                    Button(action: {
+//
+//                    }) {
+//                        Text("リセット")
+//                            .foregroundColor(.white)
+//                    }
+//                }
+//                .padding(100)
+//            }
+//            .background(Color("main_blue"))
+//            .onAppear {
+//                UITableView.appearance().backgroundColor = .clear
+//                dateFormatter.dateFormat = "HH:mm"
+//                let dateFormatterHH = DateFormatter()
+//                let dateFormattermm = DateFormatter()
+//                dateFormatterHH.dateFormat = "HH"
+//                dateFormattermm.dateFormat = "mm"
+//                dateFormatterHH.locale = Locale(identifier: "ja_jp")
+//                dateFormattermm.locale = Locale(identifier: "ja_jp")
+//                dateFormatter.locale = Locale(identifier: "ja_jp")
+//                /// .onAppearは一つにまとめる。
+//                Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+//                    self.nowDate = Date()
+//                    dateText = "\(dateFormatter.string(from: nowDate))"
+//                    let hh = Int(dateFormatterHH.string(from: nowDate))!*60
+//                    let mm = Int(dateFormattermm.string(from: nowDate))!
+//                    let minute = hh + mm
+//
+//                    switch minute {
+//                    case NagasakiTimeData.kamome_One:
+//                        nagasakiTimetableListIndex = 0
+//                    case NagasakiTimeData.kamome_three:
+//                        nagasakiTimetableListIndex = 1
+//                    case NagasakiTimeData.kamome_five:
+//                        nagasakiTimetableListIndex = 2
+//                    case NagasakiTimeData.kamome_nine:
+//                        nagasakiTimetableListIndex = 3
+//                    case NagasakiTimeData.kamome_thirteen:
+//                        nagasakiTimetableListIndex = 4
+//                    case NagasakiTimeData.kamome_seventeen:
+//                        nagasakiTimetableListIndex = 5
+//                    case NagasakiTimeData.kamome_twenty_one:
+//                        nagasakiTimetableListIndex = 6
+//                    case NagasakiTimeData.kamome_twenty_five:
+//                        nagasakiTimetableListIndex = 7
+//                    case NagasakiTimeData.kamome_forty_nine:
+//                        nagasakiTimetableListIndex = 8
+//                    case NagasakiTimeData.kamome_thirty_three:
+//                        nagasakiTimetableListIndex = 9
+//                    case NagasakiTimeData.kamome_thirty_seven:
+//                        nagasakiTimetableListIndex = 10
+//                    case NagasakiTimeData.kamome_forty_one:
+//                        nagasakiTimetableListIndex = 11
+//                    case NagasakiTimeData.kamome_forty_three:
+//                        nagasakiTimetableListIndex = 12
+//                    case NagasakiTimeData.kamome_forty_five:
+//                        nagasakiTimetableListIndex = 13
+//                    case NagasakiTimeData.kamome_forty_seven:
+//                        nagasakiTimetableListIndex = 14
+//                    case NagasakiTimeData.kamome_forty_nine:
+//                        nagasakiTimetableListIndex = 15
+//                    case NagasakiTimeData.kamome_fifty_one:
+//                        nagasakiTimetableListIndex = 16
+//                    case NagasakiTimeData.kamome_fifty_three:
+//                        nagasakiTimetableListIndex = 17
+//                    case NagasakiTimeData.kamome_fifty_five:
+//                        nagasakiTimetableListIndex = 18
+//                    case NagasakiTimeData.kamome_fifty_seven:
+//                        nagasakiTimetableListIndex = 19
+//                    case NagasakiTimeData.kamome_sixty_one:
+//                        nagasakiTimetableListIndex = 20
+//                    case NagasakiTimeData.kamome_sixty_five:
+//                        nagasakiTimetableListIndex = 21
+//                    default:
+//                        break
+//                    }
+//                }
+//            }
         }
     }
 }
 
 struct MainTextView: View {
     let text: String
+    let color: Color
     var isHeavy = true
 
     var body: some View {
         Text(text)
             .fontWeight(isHeavy ? .heavy : .regular)
-            .foregroundColor(.white)
+            .foregroundColor(color)
             .font(.largeTitle)
     }
 }

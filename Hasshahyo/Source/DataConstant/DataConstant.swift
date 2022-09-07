@@ -8,6 +8,11 @@
 import Foundation
 import SwiftUI
 
+// 佐世保線上りローカル　上り全部いれる？
+struct SaseboUpTimeData {
+
+}
+
 // 博多２番のりばから発車する列車
 struct HakataTwoPlathomeTimedata {
     static let midori_six = 451...478
@@ -82,6 +87,3 @@ struct NagasakiTimeData {
     static let kamome_sixty_five = 1322...1392
 }
 
-struct MessageData {
-    
-}

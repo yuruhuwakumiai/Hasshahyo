@@ -10,6 +10,7 @@
 		090A4E7128C1659B009A5A81 /* Font-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090A4E7028C1659B009A5A81 /* Font-Extension.swift */; };
 		090A4E7328C165AA009A5A81 /* Text-Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 090A4E7228C165AA009A5A81 /* Text-Extension.swift */; };
 		0984DEEA28C8476E009D431D /* DataConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984DEE928C8476E009D431D /* DataConstant.swift */; };
+		0984DEEC28C856B2009D431D /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984DEEB28C856B2009D431D /* ColorExtension.swift */; };
 		099D2ADD28B89E0E0095BB92 /* HasshahyoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D2ADC28B89E0E0095BB92 /* HasshahyoApp.swift */; };
 		099D2ADF28B89E0E0095BB92 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D2ADE28B89E0E0095BB92 /* ContentView.swift */; };
 		099D2AE128B89E0F0095BB92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 099D2AE028B89E0F0095BB92 /* Assets.xcassets */; };
@@ -21,6 +22,7 @@
 		090A4E7028C1659B009A5A81 /* Font-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Font-Extension.swift"; sourceTree = "<group>"; };
 		090A4E7228C165AA009A5A81 /* Text-Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Text-Extension.swift"; sourceTree = "<group>"; };
 		0984DEE928C8476E009D431D /* DataConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataConstant.swift; sourceTree = "<group>"; };
+		0984DEEB28C856B2009D431D /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		099D2AD928B89E0E0095BB92 /* Hasshahyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hasshahyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		099D2ADC28B89E0E0095BB92 /* HasshahyoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasshahyoApp.swift; sourceTree = "<group>"; };
 		099D2ADE28B89E0E0095BB92 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -46,6 +48,7 @@
 			children = (
 				090A4E7028C1659B009A5A81 /* Font-Extension.swift */,
 				090A4E7228C165AA009A5A81 /* Text-Extension.swift */,
+				0984DEEB28C856B2009D431D /* ColorExtension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -203,6 +206,7 @@
 				0984DEEA28C8476E009D431D /* DataConstant.swift in Sources */,
 				099D2ADF28B89E0E0095BB92 /* ContentView.swift in Sources */,
 				099D2ADD28B89E0E0095BB92 /* HasshahyoApp.swift in Sources */,
+				0984DEEC28C856B2009D431D /* ColorExtension.swift in Sources */,
 				090A4E7328C165AA009A5A81 /* Text-Extension.swift in Sources */,
 				090A4E7128C1659B009A5A81 /* Font-Extension.swift in Sources */,
 			);
