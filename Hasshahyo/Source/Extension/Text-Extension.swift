@@ -29,5 +29,4 @@ extension Text {
             .font(.mainFont(size: 25))
             .fontWeight(.heavy)
     }
-
 }

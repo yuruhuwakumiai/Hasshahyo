@@ -17,65 +17,6 @@ struct TimeTable: Identifiable {
 
 struct ContentView: View {
 
-    @State private var hakataTimeTableList:[TimeTable] = [
-        TimeTable(id: 0, name: "みどり\n２号",distination: "博多",departure: "6:52", platform: "のりば10"),
-        TimeTable(id: 1, name: "リレー\nかもめ\n４号", distination: "博多",departure: "7:31", platform: "のりば2"),
-        TimeTable(id: 2, name: "みどり\n６号", distination: "博多",departure: "7:58", platform: "のりば2"),
-        TimeTable(id: 3, name: "リレー\nかもめ\n８号", distination: "博多",departure: "8:19", platform: "のりば10"),
-        TimeTable(id: 4, name: "みどり\n１０号", distination: "博多",departure: "8:53", platform: "のりば 2"),
-        TimeTable(id: 5, name: "リレー\nかもめ\n１２号", distination: "博多",departure: "9:06", platform: "のりば10"),
-        TimeTable(id: 6, name: "みどり\n１４号", distination: "博多",departure: "9:51", platform: "のりば10"),
-        TimeTable(id: 7, name: "リレー\nかもめ\n１６号", distination: "博多",departure: "10:16", platform: "のりば10"),
-        TimeTable(id: 8, name: "みどり\n１８号", distination: "博多",departure: "10:51", platform: "のりば 2"),
-        TimeTable(id: 9, name: "リレー\nかもめ２０号", distination: "博多",departure: "11:17", platform: "のりば10"),
-        TimeTable(id: 10, name: "みどり\nハウステンボス\n２２号", distination: "博多",departure: "11:29", platform: "のりば 2"),
-        TimeTable(id: 11, name: "リレー\nかもめ\n２４号", distination: "博多",departure: "12:16", platform: "のりば10"),
-        TimeTable(id: 12, name: "みどり\nハウステンボス\n２６号", distination: "博多",departure: "12:27", platform: "のりば　2"),
-        TimeTable(id: 13, name: "リレー\nかもめ\n２８号", distination: "博多",departure: "13:15", platform: "のりば10"),
-        TimeTable(id: 14, name: "みどり\nハウステンボス\n３０号", distination: "博多",departure: "13:29", platform: "のりば　2"),
-        TimeTable(id: 15, name: "リレー\nかもめ\n３２号", distination: "博多",departure: "14:16", platform: "のりば10"),
-        TimeTable(id: 16, name: "みどり\nハウステンボス\n３４号", distination: "博多",departure: "14:29", platform: "のりば 2"),
-        TimeTable(id: 17, name: "リレー\nかもめ\n３６号", distination: "博多",departure: "15:16", platform: "のりば10"),
-        TimeTable(id: 18, name: "みどり\nハウス\nテンボス\n38号", distination: "博多",departure: "15:28", platform: "のりば 2"),
-        TimeTable(id: 19, name: "リレー\nかもめ\n４０号", distination: "博多",departure: "16:16", platform: "のりば10"),
-        TimeTable(id: 20, name: "みどり\nハウステンボス\n４２号", distination: "博多",departure: "16:42", platform: "のりば 1"),
-        TimeTable(id: 21, name: "リレー\nかもめ\n４４号", distination: "博多",departure: "17:13", platform: "のりば10"),
-        TimeTable(id: 22, name: "みどり\n４６号", distination: "博多",departure: "17:50", platform: "のりば10"),
-        TimeTable(id: 23, name: "リレー\nかもめ\n４８号", distination: "博多",departure: "18:15", platform: "のりば10"),
-        TimeTable(id: 24, name: "３６\nぷらす３", distination: "博多",departure: "18:24", platform: "のりば 2"),
-        TimeTable(id: 25, name: "みどり\n５０号", distination: "博多",departure: "18:48", platform: "のりば10"),
-        TimeTable(id: 26, name: "リレー\nかもめ\n５２号", distination: "博多",departure: "19:15", platform: "のりば10"),
-        TimeTable(id: 27, name: "みどり\n５４号", distination: "博多",departure: "19:51", platform: "のりば10"),
-        TimeTable(id: 28, name: "リレー\nかもめ\n５６号", distination: "博多",departure: "20:18", platform: "のりば10"),
-        TimeTable(id: 29, name: "みどり\n５８号", distination: "博多",departure: "20:57", platform: "のりば10"),
-        TimeTable(id: 30, name: "みどり\n６０号", distination: "博多",departure: "21:31", platform: "のりば10"),
-        TimeTable(id: 31, name: "リレー\nかもめ\n６２号", distination: "博多",departure: "21:49", platform: "のりば10"),
-        TimeTable(id: 32, name: "リレー\nかもめ\n６４号", distination: "門司港",departure: "22:43", platform: "のりば10"),
-    ]
-    @State private var nagasakiTimeTableList:[TimeTable] = [
-        TimeTable(id: 0, name: "かもめ\n１号",distination: "長崎",departure: "7:03", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n６５号", distination: "長崎",departure: "7:43", platform: "のりば11"),
-        TimeTable(id: 2, name: "かもめ\n３号", distination: "長崎",departure: "8:29", platform: "のりば11"),
-        TimeTable(id: 3, name: "かもめ\n５号", distination: "長崎",departure: "9:19", platform: "のりば11"),
-        TimeTable(id: 4, name: "かもめ\n９号", distination: "長崎",departure: "10:00", platform: "のりば11"),
-        TimeTable(id: 5, name: "かもめ\n１３号", distination: "長崎",departure: "11:01", platform: "のりば11"),
-        TimeTable(id: 6, name: "かもめ\n１７号", distination: "長崎",departure: "11:58", platform: "のりば11"),
-        TimeTable(id: 7, name: "かもめ\n２１号", distination: "長崎",departure: "12:56", platform: "のりば11"),
-        TimeTable(id: 8, name: "かもめ\n２５号", distination: "長崎",departure: "13:58", platform: "のりば11"),
-        TimeTable(id: 9, name: "かもめ\n２９号", distination: "長崎",departure: "14:56", platform: "のりば11"),
-        TimeTable(id: 10, name: "かもめ\n３３号", distination: "長崎",departure: "15:57", platform: "のりば11"),
-        TimeTable(id: 11, name: "かもめ\n３７号", distination: "長崎",departure: "16:58", platform: "のりば11"),
-        TimeTable(id: 12, name: "かもめ\n４１号", distination: "長崎",departure: "17:24", platform: "のりば11"),
-        TimeTable(id: 13, name: "かもめ\n４３号", distination: "長崎",departure: "18:00", platform: "のりば11"),
-        TimeTable(id: 14, name: "かもめ\n４５号", distination: "長崎",departure: "18:25", platform: "のりば11"),
-        TimeTable(id: 15, name: "かもめ\n４７号", distination: "長崎",departure: "18:59", platform: "のりば11"),
-        TimeTable(id: 16, name: "かもめ\n４９号", distination: "長崎",departure: "19:25", platform: "のりば11"),
-        TimeTable(id: 17, name: "かもめ\n５１号", distination: "長崎",departure: "20:02", platform: "のりば11"),
-        TimeTable(id: 18, name: "かもめ\n５３号", distination: "長崎",departure: "20:30", platform: "のりば11"),
-        TimeTable(id: 19, name: "かもめ\n５５号", distination: "長崎",departure: "21:06", platform: "のりば11"),
-        TimeTable(id: 20, name: "かもめ\n５７号", distination: "長崎",departure: "22:02", platform: "のりば11"),
-        TimeTable(id: 21, name: "かもめ\n６１号", distination: "長崎",departure: "23:12", platform: "のりば11")
-    ]
     @State private var hakataTwoHomeTimeTableList:[TimeTable] = [
         TimeTable(id: 2, name: "みどり\n６号", distination: "博多",departure: "7:58", platform: "のりば 2"),
         TimeTable(id: 4, name: "みどり\n１０号", distination: "博多",departure: "8:53", platform: "のりば 2"),
@@ -160,7 +101,7 @@ struct ContentView: View {
                 default:
                     break
                 }
-          }
+            }
         }
     }
 }
