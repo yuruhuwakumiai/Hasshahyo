@@ -77,13 +77,13 @@ struct ContentView: View {
         TimeTable(id: 21, name: "かもめ\n６１号", distination: "長崎",departure: "23:12", platform: "のりば11")
     ]
     @State private var hakataTwoHomeTimeTableList:[TimeTable] = [
-        TimeTable(id: 2, name: "みどり\n６号", distination: "博多",departure: "7:58", platform: "のりば2"),
+        TimeTable(id: 2, name: "みどり\n６号", distination: "博多",departure: "7:58", platform: "のりば 2"),
         TimeTable(id: 4, name: "みどり\n１０号", distination: "博多",departure: "8:53", platform: "のりば 2"),
         TimeTable(id: 8, name: "みどり\n１８号", distination: "博多",departure: "10:51", platform: "のりば 2"),
-        TimeTable(id: 10, name: "みどり\nハウステンボス\n２２号", distination: "博多",departure: "11:29", platform: "のりば 2"),
-        TimeTable(id: 12, name: "みどり\nハウステンボス\n２６号", distination: "博多",departure: "12:27", platform: "のりば　2"),
-        TimeTable(id: 14, name: "みどり\nハウステンボス\n３０号", distination: "博多",departure: "13:29", platform: "のりば　2"),
-        TimeTable(id: 16, name: "みどり\nハウステンボス\n３４号", distination: "博多",departure: "14:29", platform: "のりば10"),
+        TimeTable(id: 10, name: "みどり\nハウス\nテンボス\n２２号", distination: "博多",departure: "11:29", platform: "のりば 2"),
+        TimeTable(id: 12, name: "みどり\nハウス\nテンボス\n２６号", distination: "博多",departure: "12:27", platform: "のりば 2"),
+        TimeTable(id: 14, name: "みどり\nハウス\nテンボス\n３０号", distination: "博多",departure: "13:29", platform: "のりば 2"),
+        TimeTable(id: 16, name: "みどり\nハウス\nテンボス\n３４号", distination: "博多",departure: "14:29", platform: "のりば10"),
         TimeTable(id: 18, name: "みどり\nハウス\nテンボス\n38号", distination: "博多",departure: "15:28", platform: "のりば 2"),
         TimeTable(id: 30, name: "みどり\n６０号", distination: "博多",departure: "21:31", platform: "のりば10")
     ]
@@ -99,7 +99,8 @@ struct ContentView: View {
     var body: some View {
         HStack {
             VStack {
-                MainTextView(text: "次に「在来線のりば」から発車する特急みどり号のご案内", color: .red)
+                MainTextView(text: "次に「在来線のりば」から発車する博多行き特急列車のご案内", color: .red)
+                    .padding(.top, 50)
                 MainTextView(text: "佐世保線", color: .white)
                 MainTextView(text: "SaseboLine", color: .white)
 //                MainTextView(text: dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText, isHeavy: false)
@@ -120,20 +121,7 @@ struct ContentView: View {
                     .listRowBackground(Color.black)
                     .frame(height : 200)
                 }
-                HStack {
-                    Button(action: {
-
-                    }) {
-                        Text("送り")
-                            .foregroundColor(.white)
-                    }
-                    Button(action: {
-
-                    }) {
-                        Text("リセット")
-                            .foregroundColor(.white)
-                    }
-                }
+                MainTextView(text: "こちらの列車は在来線のりばから発車します", color: .yellow)
                 .padding(100)
             }
             .background(Color.main_blue)
@@ -155,7 +143,6 @@ struct ContentView: View {
                     let hh = Int(dateFormatterHH.string(from: nowDate))!*60
                     let mm = Int(dateFormattermm.string(from: nowDate))!
                     let minute = hh + mm
-
                     switch minute {
                     case HakataTimeData.midori_six:
                         hakataTwoPlatHomeListIndex = 0
