@@ -87,7 +87,6 @@ struct ContentView: View {
         TimeTable(id: 18, name: "みどり\nハウス\nテンボス\n38号", distination: "博多",departure: "15:28", platform: "のりば 2"),
         TimeTable(id: 30, name: "みどり\n６０号", distination: "博多",departure: "21:31", platform: "のりば10")
     ]
-
     @State private var dateText = ""
     @State private var nowDate = Date()
     @State private var hakataTimeTableListIndex = 0
@@ -99,10 +98,10 @@ struct ContentView: View {
     var body: some View {
         HStack {
             VStack {
-                MainTextView(text: "次に「在来線のりば」から発車する博多行き特急列車のご案内", color: .red)
+                MainTextView(text: "※次に「在来線のりば」から発車する博多行き特急列車のご案内", textSize: .largeTitle, color: .red)
                     .padding(.top, 50)
-                MainTextView(text: "佐世保線", color: .white)
-                MainTextView(text: "SaseboLine", color: .white)
+                    MainTextView(text: "佐世保線", textSize: .largeTitle, color: .white)
+                MainTextView(text: "SaseboLine", textSize: .headline, color: .white)
 //                MainTextView(text: dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText, isHeavy: false)
                 List(hakataTwoPlatHomeListIndex..<hakataTwoHomeTimeTableList.count, id: \.self) { index in
                     HStack {
@@ -121,8 +120,8 @@ struct ContentView: View {
                     .listRowBackground(Color.black)
                     .frame(height : 200)
                 }
-                MainTextView(text: "こちらの列車は在来線のりばから発車します", color: .yellow)
-                .padding(100)
+//                MainTextView(text: "こちらの列車は在来線のりばから発車します", color: .yellow)
+                .padding(10)
             }
             .background(Color.main_blue)
             .onAppear {
@@ -354,6 +353,7 @@ struct ContentView: View {
 
 struct MainTextView: View {
     let text: String
+    let textSize: Font
     let color: Color
     var isHeavy = true
 
@@ -361,7 +361,7 @@ struct MainTextView: View {
         Text(text)
             .fontWeight(isHeavy ? .heavy : .regular)
             .foregroundColor(color)
-            .font(.largeTitle)
+            .font(textSize)
     }
 }
 /// Previewsは一番下に記載する
