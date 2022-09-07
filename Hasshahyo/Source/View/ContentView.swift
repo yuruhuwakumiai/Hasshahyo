@@ -83,87 +83,108 @@ struct ContentView: View {
         TimeTable(id: 10, name: "みどり\nハウス\nテンボス\n２２号", distination: "博多",departure: "11:29", platform: "のりば 2"),
         TimeTable(id: 12, name: "みどり\nハウス\nテンボス\n２６号", distination: "博多",departure: "12:27", platform: "のりば 2"),
         TimeTable(id: 14, name: "みどり\nハウス\nテンボス\n３０号", distination: "博多",departure: "13:29", platform: "のりば 2"),
-        TimeTable(id: 16, name: "みどり\nハウス\nテンボス\n３４号", distination: "博多",departure: "14:29", platform: "のりば10"),
+        TimeTable(id: 16, name: "みどり\nハウス\nテンボス\n３４号", distination: "博多",departure: "14:29", platform: "のりば 2"),
         TimeTable(id: 18, name: "みどり\nハウス\nテンボス\n38号", distination: "博多",departure: "15:28", platform: "のりば 2"),
-        TimeTable(id: 30, name: "みどり\n６０号", distination: "博多",departure: "21:31", platform: "のりば10")
+        TimeTable(id: 30, name: "みどり\n６０号", distination: "博多",departure: "21:31", platform: "のりば 2")
     ]
     @State private var dateText = ""
     @State private var nowDate = Date()
-    @State private var hakataTimeTableListIndex = 0
-    @State private var nagasakiTimetableListIndex = 0
     @State private var hakataTwoPlatHomeListIndex = 0
 
     private let dateFormatter = DateFormatter()
     
     var body: some View {
-        HStack {
-            VStack {
-                MainTextView(text: "※次に「在来線のりば」から発車する博多行き特急列車のご案内", textSize: .largeTitle, color: .red)
-                    .padding(.top, 50)
-                    MainTextView(text: "佐世保線", textSize: .largeTitle, color: .white)
-                MainTextView(text: "SaseboLine", textSize: .headline, color: .white)
-//                MainTextView(text: dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText, isHeavy: false)
-                List(hakataTwoPlatHomeListIndex..<hakataTwoHomeTimeTableList.count, id: \.self) { index in
-                    HStack {
-                        Text(hakataTwoHomeTimeTableList[index].name)
-                            .h2Text(Color.train_red)
-                        Spacer()
-                        Text(hakataTwoHomeTimeTableList[index].distination)
-                            .h1Text(Color.distination_orange)
-                        Spacer()
-                        Text(hakataTwoHomeTimeTableList[index].departure)
-                            .h1Text(Color.time_green)
-                        Spacer()
-                        Text(hakataTwoHomeTimeTableList[index].platform)
-                            .h1Text(Color.distination_orange)
-                    }
-                    .listRowBackground(Color.black)
-                    .frame(height : 200)
+        VStack {
+            MainTextView(text: "※次に「在来線のりば」から発車する博多行き特急列車のご案内", textSize: .largeTitle, color: .red)
+                .padding(.top, 50)
+            MainTextView(text: "佐世保線", textSize: .largeTitle, color: .white)
+            MainTextView(text: "SaseboLine", textSize: .headline, color: .white)
+            List(hakataTwoPlatHomeListIndex..<hakataTwoHomeTimeTableList.count, id: \.self) { index in
+                HStack {
+                    Text(hakataTwoHomeTimeTableList[index].name)
+                        .h2Text(Color.train_red)
+                    Spacer()
+                    Text(hakataTwoHomeTimeTableList[index].distination)
+                        .h1Text(Color.distination_orange)
+                    Spacer()
+                    Text(hakataTwoHomeTimeTableList[index].departure)
+                        .h1Text(Color.time_green)
+                    Spacer()
+                    Text(hakataTwoHomeTimeTableList[index].platform)
+                        .h1Text(Color.distination_orange)
                 }
-//                MainTextView(text: "こちらの列車は在来線のりばから発車します", color: .yellow)
-                .padding(10)
+                .listRowBackground(Color.black)
+                .frame(height : 200)
             }
-            .background(Color.main_blue)
-            .onAppear {
-                UITableView.appearance().backgroundColor = .clear
-                /// initは使わない
-                dateFormatter.dateFormat = "HH:mm"
-                let dateFormatterHH = DateFormatter()
-                let dateFormattermm = DateFormatter()
-                dateFormatterHH.dateFormat = "HH"
-                dateFormattermm.dateFormat = "mm"
-                dateFormatterHH.locale = Locale(identifier: "ja_jp")
-                dateFormattermm.locale = Locale(identifier: "ja_jp")
-                dateFormatter.locale = Locale(identifier: "ja_jp")
-                /// .onAppearは一つにまとめる。
-                Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
-                    self.nowDate = Date()
-                    dateText = "\(dateFormatter.string(from: nowDate))"
-                    let hh = Int(dateFormatterHH.string(from: nowDate))!*60
-                    let mm = Int(dateFormattermm.string(from: nowDate))!
-                    let minute = hh + mm
-                    switch minute {
-                    case HakataTimeData.midori_six:
-                        hakataTwoPlatHomeListIndex = 0
-                    case HakataTimeData.midori_ten:
-                        hakataTwoPlatHomeListIndex = 1
-                    case HakataTimeData.midori_eighteen:
-                        hakataTwoPlatHomeListIndex = 2
-                    case HakataTimeData.midori_HTB_twentytwo:
-                        hakataTwoPlatHomeListIndex = 3
-                    case HakataTimeData.midori_HTB_twentysix:
-                        hakataTwoPlatHomeListIndex = 4
-                    case HakataTimeData.midori_HTB_thirty:
-                        hakataTwoPlatHomeListIndex = 5
-                    case HakataTimeData.midori_thirtyfour:
-                        hakataTwoPlatHomeListIndex = 6
-                    case HakataTimeData.midori_HTB_thirtyeight:
-                        hakataTwoPlatHomeListIndex = 7
-                    case HakataTimeData.midori_sixty:
-                        hakataTwoPlatHomeListIndex = 8
-                    default:
-                        break
-                    }
+            .padding(10)
+        }
+        .background(Color.main_blue)
+        .onAppear {
+            UITableView.appearance().backgroundColor = .clear
+            /// initは使わない
+            dateFormatter.dateFormat = "HH:mm"
+            let dateFormatterHH = DateFormatter()
+            let dateFormattermm = DateFormatter()
+            dateFormatterHH.dateFormat = "HH"
+            dateFormattermm.dateFormat = "mm"
+            dateFormatterHH.locale = Locale(identifier: "ja_jp")
+            dateFormattermm.locale = Locale(identifier: "ja_jp")
+            dateFormatter.locale = Locale(identifier: "ja_jp")
+            /// .onAppearは一つにまとめる。
+            Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
+                self.nowDate = Date()
+                dateText = "\(dateFormatter.string(from: nowDate))"
+                let hh = Int(dateFormatterHH.string(from: nowDate))!*60
+                let mm = Int(dateFormattermm.string(from: nowDate))!
+                let minute = hh + mm
+
+                switch minute {
+                case HakataTwoPlathomeTimedata.midori_six:
+                    hakataTwoPlatHomeListIndex = 0
+                case HakataTwoPlathomeTimedata.midori_ten:
+                    hakataTwoPlatHomeListIndex = 1
+                case HakataTwoPlathomeTimedata.midori_eighteen:
+                    hakataTwoPlatHomeListIndex = 2
+                case HakataTwoPlathomeTimedata.midori_HTB_twentytwo:
+                    hakataTwoPlatHomeListIndex = 3
+                case HakataTwoPlathomeTimedata.midori_HTB_twentysix:
+                    hakataTwoPlatHomeListIndex = 4
+                case HakataTwoPlathomeTimedata.midori_HTB_thirty:
+                    hakataTwoPlatHomeListIndex = 5
+                case HakataTwoPlathomeTimedata.midori_thirtyfour:
+                    hakataTwoPlatHomeListIndex = 6
+                case HakataTwoPlathomeTimedata.midori_HTB_thirtyeight:
+                    hakataTwoPlatHomeListIndex = 7
+                case HakataTwoPlathomeTimedata.midori_sixty:
+                    hakataTwoPlatHomeListIndex = 8
+                default:
+                    break
+                }
+          }
+        }
+    }
+}
+
+struct MainTextView: View {
+    let text: String
+    let textSize: Font
+    let color: Color
+    var isHeavy = true
+
+    var body: some View {
+        Text(text)
+            .fontWeight(isHeavy ? .heavy : .regular)
+            .foregroundColor(color)
+            .font(textSize)
+    }
+}
+/// Previewsは一番下に記載する
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .previewInterfaceOrientation(.landscapeRight)
+    }
+}
 
 //                    switch minute {
 //                    case HakataTimeData.midori_two:
@@ -236,9 +257,10 @@ struct ContentView: View {
 //                    default:
 //                        break
 //                    }
-                }
-            }
-//
+
+
+
+
 //            VStack {
 //                MainTextView(text: "西九州新幹線")
 //                MainTextView(text: "NishiKyushuShinkansen")
@@ -347,28 +369,3 @@ struct ContentView: View {
 //                    }
 //                }
 //            }
-        }
-    }
-}
-
-struct MainTextView: View {
-    let text: String
-    let textSize: Font
-    let color: Color
-    var isHeavy = true
-
-    var body: some View {
-        Text(text)
-            .fontWeight(isHeavy ? .heavy : .regular)
-            .foregroundColor(color)
-            .font(textSize)
-    }
-}
-/// Previewsは一番下に記載する
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-            .previewInterfaceOrientation(.landscapeRight)
-    }
-}
-
