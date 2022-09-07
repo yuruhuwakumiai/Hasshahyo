@@ -27,7 +27,6 @@ struct ContentView: View {
     @State private var nowDate = Date()
     @State private var hakataTimeTableListIndex = 0
     @State private var nagasakiTimetableListIndex = 0
-
     @State private var hakataTimeTableList:[TimeTable] = [
         TimeTable(id: 0, name: "みどり\n２号",distination: "博多",departure: "6:52", platform: "のりば10"),
         TimeTable(id: 1, name: "リレー\nかもめ\n４号", distination: "博多",departure: "7:31", platform: "のりば2"),
@@ -89,45 +88,56 @@ struct ContentView: View {
         TimeTable(id: 21, name: "かもめ\n６１号", distination: "長崎",departure: "23:12", platform: "のりば11")
     ]
 
+    @State private var hutukaitiUpTimetable:[TimeTable] = [
+        TimeTable(id: 0, name: "普通", distination: "吉塚", departure: "8:01", platform: "のりば3"),
+        TimeTable(id: 1, name: "快速", distination: "門司港", departure: "8:10", platform: "のりば3"),
+    ]
+
+    @State private var hutukaitiDownTimetable:[TimeTable] = [
+        TimeTable(id: 0, name: "快速", distination: "大牟田", departure: "8:12", platform: "のりば2"),
+        TimeTable(id: 1, name: "普通", distination: "荒尾", departure: "8:15", platform: "のりば1"),
+    ]
+
+
     var body: some View {
         HStack {
             VStack {
-                MainTextView(text: "佐世保線")
-                MainTextView(text: "SaseboLine")
+                MainTextView(text: "鹿児島本線")
+                MainTextView(text: "KagoshimaLine")
                 MainTextView(text: "博多方面")
                 MainTextView(text: dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText, isHeavy: false)
-                List(hakataTimeTableListIndex..<hakataTimeTableList.count, id: \.self) { index in
+                List(0..<hutukaitiUpTimetable.count, id: \.self) { index in
                     HStack {
-                        Text(hakataTimeTableList[index].name)
+                        Text(hutukaitiUpTimetable[index].name)
                             .h3Text(Color("train_red"))
                         Spacer()
-                        Text(hakataTimeTableList[index].distination)
+                        Text(hutukaitiUpTimetable[index].distination)
                             .h1Text(Color("distination_orange"))
                         Spacer()
-                        Text(hakataTimeTableList[index].departure)
+                        Text(hutukaitiUpTimetable[index].departure)
                             .h1Text(Color("time_green"))
                         Spacer()
-                        Text(hakataTimeTableList[index].platform)
+                        Text(hutukaitiUpTimetable[index].platform)
                             .h3Text(Color("distination_orange"))
                     }
                     .listRowBackground(Color.black)
                     .frame(height : 200)
                 }
-                HStack {
-                    Button(action: {
-
-                    }) {
-                        Text("送り")
-                            .foregroundColor(.white)
-                    }
-                    Button(action: {
-
-                    }) {
-                        Text("リセット")
-                            .foregroundColor(.white)
-                    }
-                }
-                .padding(100)
+//                HStack {
+//                    Button(action: {
+//
+//                    }) {
+//                        Text("送り")
+//                            .foregroundColor(.white)
+//                    }
+//                    Button(action: {
+//
+//                    }) {
+//                        Text("リセット")
+//                            .foregroundColor(.white)
+//                    }
+//                }
+                Spacer()
             }
             .background(Color("main_blue"))
             .onAppear {
@@ -149,119 +159,118 @@ struct ContentView: View {
                     let mm = Int(dateFormattermm.string(from: nowDate))!
                     let minute = hh + mm
 
-                    switch minute {
-                    case HakataTimeData.midori_two:
-                        hakataTimeTableListIndex = 0
-                    case HakataTimeData.relayKamome_four:
-                        hakataTimeTableListIndex = 1
-                    case HakataTimeData.midori_six:
-                        hakataTimeTableListIndex = 2
-                    case HakataTimeData.relaykamome_eight:
-                        hakataTimeTableListIndex = 3
-                    case HakataTimeData.midori_ten:
-                        hakataTimeTableListIndex = 4
-                    case HakataTimeData.relaykamome_twelve:
-                        hakataTimeTableListIndex = 5
-                    case HakataTimeData.midori_fourteen:
-                        hakataTimeTableListIndex = 6
-                    case HakataTimeData.relaykamome_sixteen:
-                        hakataTimeTableListIndex = 7
-                    case HakataTimeData.midori_eighteen:
-                        hakataTimeTableListIndex = 8
-                    case HakataTimeData.relaykamome_twenty:
-                        hakataTimeTableListIndex = 9
-                    case HakataTimeData.midori_HTB_twentytwo:
-                        hakataTimeTableListIndex = 10
-                    case HakataTimeData.relaykamome_twentyfour:
-                        hakataTimeTableListIndex = 11
-                    case HakataTimeData.midori_HTB_twentysix:
-                        hakataTimeTableListIndex = 12
-                    case HakataTimeData.relaykamome_twentyeight:
-                        hakataTimeTableListIndex = 13
-                    case HakataTimeData.midori_HTB_thirty:
-                        hakataTimeTableListIndex = 14
-                    case HakataTimeData.relaykamome_thirtytwo:
-                        hakataTimeTableListIndex = 15
-                    case HakataTimeData.midori_thirtyfour:
-                        hakataTimeTableListIndex = 16
-                    case HakataTimeData.relaykamome_thirtysix:
-                        hakataTimeTableListIndex = 17
-                    case HakataTimeData.midori_HTB_thirtyeight:
-                        hakataTimeTableListIndex = 18
-                    case HakataTimeData.relaykamome_forty:
-                        hakataTimeTableListIndex = 19
-                    case HakataTimeData.midori_HTB_fortytwo:
-                        hakataTimeTableListIndex = 20
-                    case HakataTimeData.relaykamome_fortyfour:
-                        hakataTimeTableListIndex = 21
-                    case HakataTimeData.midori_fortysix:
-                        hakataTimeTableListIndex = 22
-                    case HakataTimeData.relaykamome_fortyeight:
-                        hakataTimeTableListIndex = 23
-                    case HakataTimeData.sanjuuroku:
-                        hakataTimeTableListIndex = 24
-                    case HakataTimeData.midori_fifty:
-                        hakataTimeTableListIndex = 25
-                    case HakataTimeData.relaykamome_fiftytwo:
-                        hakataTimeTableListIndex = 26
-                    case HakataTimeData.midori_fiftyfour:
-                        hakataTimeTableListIndex = 27
-                    case HakataTimeData.relaykamome_fiftysix:
-                        hakataTimeTableListIndex = 28
-                    case HakataTimeData.midori_fiftyeight:
-                        hakataTimeTableListIndex = 29
-                    case HakataTimeData.midori_sixty:
-                        hakataTimeTableListIndex = 30
-                    case HakataTimeData.relaykamome_sixtytwo:
-                        hakataTimeTableListIndex = 31
-                    case HakataTimeData.relaykamome_sixtyfour:
-                        hakataTimeTableListIndex = 32
-
-                    default:
-                        break
-                    }
+//                    switch minute {
+//                    case HakataTimeData.midori_two:
+//                        hakataTimeTableListIndex = 0
+//                    case HakataTimeData.relayKamome_four:
+//                        hakataTimeTableListIndex = 1
+//                    case HakataTimeData.midori_six:
+//                        hakataTimeTableListIndex = 2
+//                    case HakataTimeData.relaykamome_eight:
+//                        hakataTimeTableListIndex = 3
+//                    case HakataTimeData.midori_ten:
+//                        hakataTimeTableListIndex = 4
+//                    case HakataTimeData.relaykamome_twelve:
+//                        hakataTimeTableListIndex = 5
+//                    case HakataTimeData.midori_fourteen:
+//                        hakataTimeTableListIndex = 6
+//                    case HakataTimeData.relaykamome_sixteen:
+//                        hakataTimeTableListIndex = 7
+//                    case HakataTimeData.midori_eighteen:
+//                        hakataTimeTableListIndex = 8
+//                    case HakataTimeData.relaykamome_twenty:
+//                        hakataTimeTableListIndex = 9
+//                    case HakataTimeData.midori_HTB_twentytwo:
+//                        hakataTimeTableListIndex = 10
+//                    case HakataTimeData.relaykamome_twentyfour:
+//                        hakataTimeTableListIndex = 11
+//                    case HakataTimeData.midori_HTB_twentysix:
+//                        hakataTimeTableListIndex = 12
+//                    case HakataTimeData.relaykamome_twentyeight:
+//                        hakataTimeTableListIndex = 13
+//                    case HakataTimeData.midori_HTB_thirty:
+//                        hakataTimeTableListIndex = 14
+//                    case HakataTimeData.relaykamome_thirtytwo:
+//                        hakataTimeTableListIndex = 15
+//                    case HakataTimeData.midori_thirtyfour:
+//                        hakataTimeTableListIndex = 16
+//                    case HakataTimeData.relaykamome_thirtysix:
+//                        hakataTimeTableListIndex = 17
+//                    case HakataTimeData.midori_HTB_thirtyeight:
+//                        hakataTimeTableListIndex = 18
+//                    case HakataTimeData.relaykamome_forty:
+//                        hakataTimeTableListIndex = 19
+//                    case HakataTimeData.midori_HTB_fortytwo:
+//                        hakataTimeTableListIndex = 20
+//                    case HakataTimeData.relaykamome_fortyfour:
+//                        hakataTimeTableListIndex = 21
+//                    case HakataTimeData.midori_fortysix:
+//                        hakataTimeTableListIndex = 22
+//                    case HakataTimeData.relaykamome_fortyeight:
+//                        hakataTimeTableListIndex = 23
+//                    case HakataTimeData.sanjuuroku:
+//                        hakataTimeTableListIndex = 24
+//                    case HakataTimeData.midori_fifty:
+//                        hakataTimeTableListIndex = 25
+//                    case HakataTimeData.relaykamome_fiftytwo:
+//                        hakataTimeTableListIndex = 26
+//                    case HakataTimeData.midori_fiftyfour:
+//                        hakataTimeTableListIndex = 27
+//                    case HakataTimeData.relaykamome_fiftysix:
+//                        hakataTimeTableListIndex = 28
+//                    case HakataTimeData.midori_fiftyeight:
+//                        hakataTimeTableListIndex = 29
+//                    case HakataTimeData.midori_sixty:
+//                        hakataTimeTableListIndex = 30
+//                    case HakataTimeData.relaykamome_sixtytwo:
+//                        hakataTimeTableListIndex = 31
+//                    case HakataTimeData.relaykamome_sixtyfour:
+//                        hakataTimeTableListIndex = 32
+//
+//                    default:
+//                        break
+//                    }
                 }
             }
 
             VStack {
-                MainTextView(text: "西九州新幹線")
-                MainTextView(text: "NishiKyushuShinkansen")
-                MainTextView(text: "長崎方面")
+                MainTextView(text: "鹿児島本線")
+                MainTextView(text: "KagoshimaLine")
+                MainTextView(text: "鳥栖方面")
                 MainTextView(text: dateText.isEmpty ? "\(dateFormatter.string(from: nowDate))" : dateText, isHeavy: false)
-                List(nagasakiTimetableListIndex..<nagasakiTimeTableList.count, id: \.self) { index in
+                List(0..<hutukaitiDownTimetable.count, id: \.self) { index in
                     HStack {
-                        Text(nagasakiTimeTableList[index].name)
+                        Text(hutukaitiDownTimetable[index].name)
                             .h3Text(Color("train_red"))
                         Spacer()
-                        Text(nagasakiTimeTableList[index].distination)
+                        Text(hutukaitiDownTimetable[index].distination)
                             .h1Text(Color("distination_orange"))
                         Spacer()
-                        Text(nagasakiTimeTableList[index].departure)
+                        Text(hutukaitiDownTimetable[index].departure)
                             .h1Text(Color("time_green"))
                         Spacer()
-                        Text(nagasakiTimeTableList[index].platform)
+                        Text(hutukaitiDownTimetable[index].platform)
                             .h3Text(Color("distination_orange"))
                     }
                     .listRowBackground(Color.black)
                     .frame(height : 200)
                 }
-                HStack {
-                    Button(action: {
-
-                    }) {
-                        Text("送り")
-                            .foregroundColor(.white)
-                    }
-
-                    Button(action: {
-
-                    }) {
-                        Text("リセット")
-                            .foregroundColor(.white)
-                    }
-                }
-                .padding(100)
-            }
+//                HStack {
+//                    Button(action: {
+//
+//                    }) {
+//                        Text("送り")
+//                            .foregroundColor(.white)
+//                    }
+//
+//                    Button(action: {
+//
+//                    }) {
+//                        Text("リセット")
+//                            .foregroundColor(.white)
+//                    }
+//                }
+                Spacer()            }
             .background(Color("main_blue"))
             .onAppear {
                 UITableView.appearance().backgroundColor = .clear
@@ -281,54 +290,54 @@ struct ContentView: View {
                     let mm = Int(dateFormattermm.string(from: nowDate))!
                     let minute = hh + mm
 
-                    switch minute {
-                    case NagasakiTimeData.kamome_One:
-                        nagasakiTimetableListIndex = 0
-                    case NagasakiTimeData.kamome_three:
-                        nagasakiTimetableListIndex = 1
-                    case NagasakiTimeData.kamome_five:
-                        nagasakiTimetableListIndex = 2
-                    case NagasakiTimeData.kamome_nine:
-                        nagasakiTimetableListIndex = 3
-                    case NagasakiTimeData.kamome_thirteen:
-                        nagasakiTimetableListIndex = 4
-                    case NagasakiTimeData.kamome_seventeen:
-                        nagasakiTimetableListIndex = 5
-                    case NagasakiTimeData.kamome_twenty_one:
-                        nagasakiTimetableListIndex = 6
-                    case NagasakiTimeData.kamome_twenty_five:
-                        nagasakiTimetableListIndex = 7
-                    case NagasakiTimeData.kamome_forty_nine:
-                        nagasakiTimetableListIndex = 8
-                    case NagasakiTimeData.kamome_thirty_three:
-                        nagasakiTimetableListIndex = 9
-                    case NagasakiTimeData.kamome_thirty_seven:
-                        nagasakiTimetableListIndex = 10
-                    case NagasakiTimeData.kamome_forty_one:
-                        nagasakiTimetableListIndex = 11
-                    case NagasakiTimeData.kamome_forty_three:
-                        nagasakiTimetableListIndex = 12
-                    case NagasakiTimeData.kamome_forty_five:
-                        nagasakiTimetableListIndex = 13
-                    case NagasakiTimeData.kamome_forty_seven:
-                        nagasakiTimetableListIndex = 14
-                    case NagasakiTimeData.kamome_forty_nine:
-                        nagasakiTimetableListIndex = 15
-                    case NagasakiTimeData.kamome_fifty_one:
-                        nagasakiTimetableListIndex = 16
-                    case NagasakiTimeData.kamome_fifty_three:
-                        nagasakiTimetableListIndex = 17
-                    case NagasakiTimeData.kamome_fifty_five:
-                        nagasakiTimetableListIndex = 18
-                    case NagasakiTimeData.kamome_fifty_seven:
-                        nagasakiTimetableListIndex = 19
-                    case NagasakiTimeData.kamome_sixty_one:
-                        nagasakiTimetableListIndex = 20
-                    case NagasakiTimeData.kamome_sixty_five:
-                        nagasakiTimetableListIndex = 21
-                    default:
-                        break
-                    }
+//                    switch minute {
+//                    case NagasakiTimeData.kamome_One:
+//                        nagasakiTimetableListIndex = 0
+//                    case NagasakiTimeData.kamome_three:
+//                        nagasakiTimetableListIndex = 1
+//                    case NagasakiTimeData.kamome_five:
+//                        nagasakiTimetableListIndex = 2
+//                    case NagasakiTimeData.kamome_nine:
+//                        nagasakiTimetableListIndex = 3
+//                    case NagasakiTimeData.kamome_thirteen:
+//                        nagasakiTimetableListIndex = 4
+//                    case NagasakiTimeData.kamome_seventeen:
+//                        nagasakiTimetableListIndex = 5
+//                    case NagasakiTimeData.kamome_twenty_one:
+//                        nagasakiTimetableListIndex = 6
+//                    case NagasakiTimeData.kamome_twenty_five:
+//                        nagasakiTimetableListIndex = 7
+//                    case NagasakiTimeData.kamome_forty_nine:
+//                        nagasakiTimetableListIndex = 8
+//                    case NagasakiTimeData.kamome_thirty_three:
+//                        nagasakiTimetableListIndex = 9
+//                    case NagasakiTimeData.kamome_thirty_seven:
+//                        nagasakiTimetableListIndex = 10
+//                    case NagasakiTimeData.kamome_forty_one:
+//                        nagasakiTimetableListIndex = 11
+//                    case NagasakiTimeData.kamome_forty_three:
+//                        nagasakiTimetableListIndex = 12
+//                    case NagasakiTimeData.kamome_forty_five:
+//                        nagasakiTimetableListIndex = 13
+//                    case NagasakiTimeData.kamome_forty_seven:
+//                        nagasakiTimetableListIndex = 14
+//                    case NagasakiTimeData.kamome_forty_nine:
+//                        nagasakiTimetableListIndex = 15
+//                    case NagasakiTimeData.kamome_fifty_one:
+//                        nagasakiTimetableListIndex = 16
+//                    case NagasakiTimeData.kamome_fifty_three:
+//                        nagasakiTimetableListIndex = 17
+//                    case NagasakiTimeData.kamome_fifty_five:
+//                        nagasakiTimetableListIndex = 18
+//                    case NagasakiTimeData.kamome_fifty_seven:
+//                        nagasakiTimetableListIndex = 19
+//                    case NagasakiTimeData.kamome_sixty_one:
+//                        nagasakiTimetableListIndex = 20
+//                    case NagasakiTimeData.kamome_sixty_five:
+//                        nagasakiTimetableListIndex = 21
+//                    default:
+//                        break
+//                    }
                 }
             }
         }
