@@ -22,7 +22,7 @@ struct ContentView: View {
     @State private var nowDate = Date()
     @State private var hakataTwoPlatHomeListIndex = 0
     private let dateFormatter = DateFormatter()
-    private let midoriLocalAnounce = try!  AVAudioPlayer(data: NSDataAsset(name: "在来線のりば注意喚起")!.data)
+    private let midoriLocalAnounce = try!  AVAudioPlayer(data: NSDataAsset(name: "販売発車標広告_9:8作成")!.data)
     private func playSound(){
         midoriLocalAnounce.stop()
         midoriLocalAnounce.currentTime = 0.0
@@ -79,9 +79,10 @@ struct ContentView: View {
             dateFormatterHH.locale = Locale(identifier: "ja_jp")
             dateFormattermm.locale = Locale(identifier: "ja_jp")
             dateFormatter.locale = Locale(identifier: "ja_jp")
-            Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
-                self.playSound()
-            }
+//            Timer.scheduledTimer(withTimeInterval: 5, repeats: true) { _ in
+//                self.playSound()
+//            }
+            playSound()
             /// .onAppearは一つにまとめる。
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
                 self.nowDate = Date()
