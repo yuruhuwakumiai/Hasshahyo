@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AVFoundation
 
 struct TimeTable: Identifiable {
     var id: Int
@@ -16,6 +17,18 @@ struct TimeTable: Identifiable {
 }
 
 struct ContentView: View {
+
+    @State private var dateText = ""
+    @State private var nowDate = Date()
+    @State private var hakataTwoPlatHomeListIndex = 0
+    private let dateFormatter = DateFormatter()
+    private let midoriLocalAnounce = try!  AVAudioPlayer(data: NSDataAsset(name: "在来線のりば注意喚起")!.data)
+    private func playSound(){
+        midoriLocalAnounce.stop()
+        midoriLocalAnounce.currentTime = 0.0
+        midoriLocalAnounce.play()
+    }
+
 
     @State private var hakataTwoHomeTimeTableList:[TimeTable] = [
         TimeTable(id: 2, name: "みどり\n６号", distination: "博多",departure: "7:58", platform: "のりば 2"),
@@ -28,11 +41,6 @@ struct ContentView: View {
         TimeTable(id: 18, name: "みどり\nハウス\nテンボス\n38号", distination: "博多",departure: "15:28", platform: "のりば 2"),
         TimeTable(id: 30, name: "みどり\n６０号", distination: "博多",departure: "21:31", platform: "のりば 2")
     ]
-    @State private var dateText = ""
-    @State private var nowDate = Date()
-    @State private var hakataTwoPlatHomeListIndex = 0
-
-    private let dateFormatter = DateFormatter()
     
     var body: some View {
         VStack {
@@ -71,6 +79,9 @@ struct ContentView: View {
             dateFormatterHH.locale = Locale(identifier: "ja_jp")
             dateFormattermm.locale = Locale(identifier: "ja_jp")
             dateFormatter.locale = Locale(identifier: "ja_jp")
+            Timer.scheduledTimer(withTimeInterval: 60, repeats: true) { _ in
+                self.playSound()
+            }
             /// .onAppearは一つにまとめる。
             Timer.scheduledTimer(withTimeInterval: 1, repeats: true) { _ in
                 self.nowDate = Date()
