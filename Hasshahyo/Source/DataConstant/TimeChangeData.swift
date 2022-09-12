@@ -1,5 +1,5 @@
 //
-//  DataConstant.swift
+//  TimeChangeData.swift
 //  Hasshahyo
 //
 //  Created by 橋元雄太郎 on 2022/09/07.
@@ -21,7 +21,7 @@ struct HakataTwoPlathomeTimedata {
     static let midori_sixty = 1257...1291
 }
 
-struct HakataTimeData {
+struct HakataExpressTimeData {
     static let midori_two = 0...412
     static let relayKamome_four = 412...451
     static let midori_six = 451...478
@@ -57,7 +57,7 @@ struct HakataTimeData {
     static let relaykamome_sixtyfour = 1309...1363
 }
 
-struct NagasakiTimeData {
+struct NagasakiShinkansenTimeData {
     static let kamome_One = 0...423
     static let kamome_three = 423...463
     static let kamome_five = 463...509

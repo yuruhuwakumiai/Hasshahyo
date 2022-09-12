@@ -28,9 +28,10 @@ struct ContentView: View {
     @State private var hakataTimeTableListIndex = 0
     @State private var nagasakiTimetableListIndex = 0
 
+    // 9/12　確認（hashimoto/shirai）
     @State private var hakataTimeTableList:[TimeTable] = [
         TimeTable(id: 0, name: "みどり\n２号",distination: "博多",departure: "6:52", platform: "のりば10"),
-        TimeTable(id: 1, name: "リレー\nかもめ\n４号", distination: "博多",departure: "7:31", platform: "のりば2"),
+        TimeTable(id: 1, name: "リレー\nかもめ\n４号", distination: "博多",departure: "7:31", platform: "のりば10"),
         TimeTable(id: 2, name: "みどり\n６号", distination: "博多",departure: "7:58", platform: "のりば2"),
         TimeTable(id: 3, name: "リレー\nかもめ\n８号", distination: "博多",departure: "8:19", platform: "のりば10"),
         TimeTable(id: 4, name: "みどり\n１０号", distination: "博多",departure: "8:53", platform: "のりば 2"),
@@ -41,13 +42,13 @@ struct ContentView: View {
         TimeTable(id: 9, name: "リレー\nかもめ２０号", distination: "博多",departure: "11:17", platform: "のりば10"),
         TimeTable(id: 10, name: "みどり\nハウステンボス\n２２号", distination: "博多",departure: "11:29", platform: "のりば 2"),
         TimeTable(id: 11, name: "リレー\nかもめ\n２４号", distination: "博多",departure: "12:16", platform: "のりば10"),
-        TimeTable(id: 12, name: "みどり\nハウステンボス\n２６号", distination: "博多",departure: "12:27", platform: "のりば　2"),
+        TimeTable(id: 12, name: "みどり\nハウステンボス\n２６号", distination: "博多",departure: "12:27", platform: "のりば 2"),
         TimeTable(id: 13, name: "リレー\nかもめ\n２８号", distination: "博多",departure: "13:15", platform: "のりば10"),
         TimeTable(id: 14, name: "みどり\nハウステンボス\n３０号", distination: "博多",departure: "13:29", platform: "のりば　2"),
         TimeTable(id: 15, name: "リレー\nかもめ\n３２号", distination: "博多",departure: "14:16", platform: "のりば10"),
-        TimeTable(id: 16, name: "みどり\nハウステンボス\n３４号", distination: "博多",departure: "14:29", platform: "のりば10"),
+        TimeTable(id: 16, name: "みどり\n３４号", distination: "博多",departure: "14:29", platform: "のりば 2"),
         TimeTable(id: 17, name: "リレー\nかもめ\n３６号", distination: "博多",departure: "15:16", platform: "のりば10"),
-        TimeTable(id: 18, name: "みどり\nハウス\nテンボス\n38号", distination: "博多",departure: "15:28", platform: "のりば 2"),
+        TimeTable(id: 18, name: "みどり\nハウス\nテンボス\n３８号", distination: "博多",departure: "15:28", platform: "のりば 2"),
         TimeTable(id: 19, name: "リレー\nかもめ\n４０号", distination: "博多",departure: "16:16", platform: "のりば10"),
         TimeTable(id: 20, name: "みどり\nハウステンボス\n４２号", distination: "博多",departure: "16:42", platform: "のりば 1"),
         TimeTable(id: 21, name: "リレー\nかもめ\n４４号", distination: "博多",departure: "17:13", platform: "のりば10"),
@@ -64,29 +65,30 @@ struct ContentView: View {
         TimeTable(id: 32, name: "リレー\nかもめ\n６４号", distination: "門司港",departure: "22:43", platform: "のりば10"),
     ]
 
+// 9/12　確認（hashimoto/shirai）
     @State private var nagasakiTimeTableList:[TimeTable] = [
         TimeTable(id: 0, name: "かもめ\n１号",distination: "長崎",departure: "7:03", platform: "のりば11"),
-        TimeTable(id: 1, name: "かもめ\n６５号", distination: "長崎",departure: "7:43", platform: "のりば11"),
-        TimeTable(id: 2, name: "かもめ\n３号", distination: "長崎",departure: "8:29", platform: "のりば11"),
-        TimeTable(id: 3, name: "かもめ\n５号", distination: "長崎",departure: "9:19", platform: "のりば11"),
-        TimeTable(id: 4, name: "かもめ\n９号", distination: "長崎",departure: "10:00", platform: "のりば11"),
-        TimeTable(id: 5, name: "かもめ\n１３号", distination: "長崎",departure: "11:01", platform: "のりば11"),
-        TimeTable(id: 6, name: "かもめ\n１７号", distination: "長崎",departure: "11:58", platform: "のりば11"),
-        TimeTable(id: 7, name: "かもめ\n２１号", distination: "長崎",departure: "12:56", platform: "のりば11"),
-        TimeTable(id: 8, name: "かもめ\n２５号", distination: "長崎",departure: "13:58", platform: "のりば11"),
-        TimeTable(id: 9, name: "かもめ\n２９号", distination: "長崎",departure: "14:56", platform: "のりば11"),
-        TimeTable(id: 10, name: "かもめ\n３３号", distination: "長崎",departure: "15:57", platform: "のりば11"),
-        TimeTable(id: 11, name: "かもめ\n３７号", distination: "長崎",departure: "16:58", platform: "のりば11"),
-        TimeTable(id: 12, name: "かもめ\n４１号", distination: "長崎",departure: "17:24", platform: "のりば11"),
-        TimeTable(id: 13, name: "かもめ\n４３号", distination: "長崎",departure: "18:00", platform: "のりば11"),
-        TimeTable(id: 14, name: "かもめ\n４５号", distination: "長崎",departure: "18:25", platform: "のりば11"),
-        TimeTable(id: 15, name: "かもめ\n４７号", distination: "長崎",departure: "18:59", platform: "のりば11"),
-        TimeTable(id: 16, name: "かもめ\n４９号", distination: "長崎",departure: "19:25", platform: "のりば11"),
-        TimeTable(id: 17, name: "かもめ\n５１号", distination: "長崎",departure: "20:02", platform: "のりば11"),
-        TimeTable(id: 18, name: "かもめ\n５３号", distination: "長崎",departure: "20:30", platform: "のりば11"),
-        TimeTable(id: 19, name: "かもめ\n５５号", distination: "長崎",departure: "21:06", platform: "のりば11"),
-        TimeTable(id: 20, name: "かもめ\n５７号", distination: "長崎",departure: "22:02", platform: "のりば11"),
-        TimeTable(id: 21, name: "かもめ\n６１号", distination: "長崎",departure: "23:12", platform: "のりば11")
+        TimeTable(id: 1, name: "かもめ\n３号", distination: "長崎",departure: "7:43", platform: "のりば11"),
+        TimeTable(id: 2, name: "かもめ\n５号", distination: "長崎",departure: "8:29", platform: "のりば11"),
+        TimeTable(id: 3, name: "かもめ\n９号", distination: "長崎",departure: "9:19", platform: "のりば11"),
+        TimeTable(id: 4, name: "かもめ\n１３号", distination: "長崎",departure: "10:00", platform: "のりば11"),
+        TimeTable(id: 5, name: "かもめ\n１７号", distination: "長崎",departure: "11:01", platform: "のりば11"),
+        TimeTable(id: 6, name: "かもめ\n２１号", distination: "長崎",departure: "11:58", platform: "のりば11"),
+        TimeTable(id: 7, name: "かもめ\n２５号", distination: "長崎",departure: "12:56", platform: "のりば11"),
+        TimeTable(id: 8, name: "かもめ\n２９号", distination: "長崎",departure: "13:58", platform: "のりば11"),
+        TimeTable(id: 9, name: "かもめ\n３３号", distination: "長崎",departure: "14:56", platform: "のりば11"),
+        TimeTable(id: 10, name: "かもめ\n３７号", distination: "長崎",departure: "15:57", platform: "のりば11"),
+        TimeTable(id: 11, name: "かもめ\n４１号", distination: "長崎",departure: "16:58", platform: "のりば11"),
+        TimeTable(id: 12, name: "かもめ\n４３号", distination: "長崎",departure: "17:24", platform: "のりば11"),
+        TimeTable(id: 13, name: "かもめ\n４５号", distination: "長崎",departure: "18:00", platform: "のりば11"),
+        TimeTable(id: 14, name: "かもめ\n４７号", distination: "長崎",departure: "18:25", platform: "のりば11"),
+        TimeTable(id: 15, name: "かもめ\n４９号", distination: "長崎",departure: "18:59", platform: "のりば11"),
+        TimeTable(id: 16, name: "かもめ\n５１号", distination: "長崎",departure: "19:25", platform: "のりば11"),
+        TimeTable(id: 17, name: "かもめ\n５３号", distination: "長崎",departure: "20:02", platform: "のりば11"),
+        TimeTable(id: 18, name: "かもめ\n５５号", distination: "長崎",departure: "20:30", platform: "のりば11"),
+        TimeTable(id: 19, name: "かもめ\n５７号", distination: "長崎",departure: "21:06", platform: "のりば11"),
+        TimeTable(id: 20, name: "かもめ\n６１号", distination: "長崎",departure: "22:02", platform: "のりば11"),
+        TimeTable(id: 21, name: "かもめ\n６５号", distination: "長崎",departure: "23:12", platform: "のりば11")
     ]
 
     var body: some View {
@@ -150,73 +152,104 @@ struct ContentView: View {
                     let minute = hh + mm
 
                     switch minute {
-                    case HakataTimeData.midori_two:
+                    case HakataExpressTimeData.midori_two:
                         hakataTimeTableListIndex = 0
-                    case HakataTimeData.relayKamome_four:
-                        hakataTimeTableListIndex = 1
-                    case HakataTimeData.midori_six:
-                        hakataTimeTableListIndex = 2
-                    case HakataTimeData.relaykamome_eight:
-                        hakataTimeTableListIndex = 3
-                    case HakataTimeData.midori_ten:
-                        hakataTimeTableListIndex = 4
-                    case HakataTimeData.relaykamome_twelve:
-                        hakataTimeTableListIndex = 5
-                    case HakataTimeData.midori_fourteen:
-                        hakataTimeTableListIndex = 6
-                    case HakataTimeData.relaykamome_sixteen:
-                        hakataTimeTableListIndex = 7
-                    case HakataTimeData.midori_eighteen:
-                        hakataTimeTableListIndex = 8
-                    case HakataTimeData.relaykamome_twenty:
-                        hakataTimeTableListIndex = 9
-                    case HakataTimeData.midori_HTB_twentytwo:
-                        hakataTimeTableListIndex = 10
-                    case HakataTimeData.relaykamome_twentyfour:
-                        hakataTimeTableListIndex = 11
-                    case HakataTimeData.midori_HTB_twentysix:
-                        hakataTimeTableListIndex = 12
-                    case HakataTimeData.relaykamome_twentyeight:
-                        hakataTimeTableListIndex = 13
-                    case HakataTimeData.midori_HTB_thirty:
-                        hakataTimeTableListIndex = 14
-                    case HakataTimeData.relaykamome_thirtytwo:
-                        hakataTimeTableListIndex = 15
-                    case HakataTimeData.midori_thirtyfour:
-                        hakataTimeTableListIndex = 16
-                    case HakataTimeData.relaykamome_thirtysix:
-                        hakataTimeTableListIndex = 17
-                    case HakataTimeData.midori_HTB_thirtyeight:
-                        hakataTimeTableListIndex = 18
-                    case HakataTimeData.relaykamome_forty:
-                        hakataTimeTableListIndex = 19
-                    case HakataTimeData.midori_HTB_fortytwo:
-                        hakataTimeTableListIndex = 20
-                    case HakataTimeData.relaykamome_fortyfour:
-                        hakataTimeTableListIndex = 21
-                    case HakataTimeData.midori_fortysix:
-                        hakataTimeTableListIndex = 22
-                    case HakataTimeData.relaykamome_fortyeight:
-                        hakataTimeTableListIndex = 23
-                    case HakataTimeData.sanjuuroku:
-                        hakataTimeTableListIndex = 24
-                    case HakataTimeData.midori_fifty:
-                        hakataTimeTableListIndex = 25
-                    case HakataTimeData.relaykamome_fiftytwo:
-                        hakataTimeTableListIndex = 26
-                    case HakataTimeData.midori_fiftyfour:
-                        hakataTimeTableListIndex = 27
-                    case HakataTimeData.relaykamome_fiftysix:
-                        hakataTimeTableListIndex = 28
-                    case HakataTimeData.midori_fiftyeight:
-                        hakataTimeTableListIndex = 29
-                    case HakataTimeData.midori_sixty:
-                        hakataTimeTableListIndex = 30
-                    case HakataTimeData.relaykamome_sixtytwo:
-                        hakataTimeTableListIndex = 31
-                    case HakataTimeData.relaykamome_sixtyfour:
-                        hakataTimeTableListIndex = 32
 
+                    case HakataExpressTimeData.relayKamome_four:
+                        hakataTimeTableListIndex = 1
+
+                    case HakataExpressTimeData.midori_six:
+                        hakataTimeTableListIndex = 2
+
+                    case HakataExpressTimeData.relaykamome_eight:
+                        hakataTimeTableListIndex = 3
+
+                    case HakataExpressTimeData.midori_ten:
+                        hakataTimeTableListIndex = 4
+
+                    case HakataExpressTimeData.relaykamome_twelve:
+                        hakataTimeTableListIndex = 5
+
+                    case HakataExpressTimeData.midori_fourteen:
+                        hakataTimeTableListIndex = 6
+
+                    case HakataExpressTimeData.relaykamome_sixteen:
+                        hakataTimeTableListIndex = 7
+
+                    case HakataExpressTimeData.midori_eighteen:
+                        hakataTimeTableListIndex = 8
+
+                    case HakataExpressTimeData.relaykamome_twenty:
+                        hakataTimeTableListIndex = 9
+
+                    case HakataExpressTimeData.midori_HTB_twentytwo:
+                        hakataTimeTableListIndex = 10
+
+                    case HakataExpressTimeData.relaykamome_twentyfour:
+                        hakataTimeTableListIndex = 11
+
+                    case HakataExpressTimeData.midori_HTB_twentysix:
+                        hakataTimeTableListIndex = 12
+
+                    case HakataExpressTimeData.relaykamome_twentyeight:
+                        hakataTimeTableListIndex = 13
+
+                    case HakataExpressTimeData.midori_HTB_thirty:
+                        hakataTimeTableListIndex = 14
+
+                    case HakataExpressTimeData.relaykamome_thirtytwo:
+                        hakataTimeTableListIndex = 15
+
+                    case HakataExpressTimeData.midori_thirtyfour:
+                        hakataTimeTableListIndex = 16
+
+                    case HakataExpressTimeData.relaykamome_thirtysix:
+                        hakataTimeTableListIndex = 17
+
+                    case HakataExpressTimeData.midori_HTB_thirtyeight:
+                        hakataTimeTableListIndex = 18
+
+                    case HakataExpressTimeData.relaykamome_forty:
+                        hakataTimeTableListIndex = 19
+
+                    case HakataExpressTimeData.midori_HTB_fortytwo:
+                        hakataTimeTableListIndex = 20
+
+                    case HakataExpressTimeData.relaykamome_fortyfour:
+                        hakataTimeTableListIndex = 21
+
+                    case HakataExpressTimeData.midori_fortysix:
+                        hakataTimeTableListIndex = 22
+
+                    case HakataExpressTimeData.relaykamome_fortyeight:
+                        hakataTimeTableListIndex = 23
+
+                    case HakataExpressTimeData.sanjuuroku:
+                        hakataTimeTableListIndex = 24
+
+                    case HakataExpressTimeData.midori_fifty:
+                        hakataTimeTableListIndex = 25
+
+                    case HakataExpressTimeData.relaykamome_fiftytwo:
+                        hakataTimeTableListIndex = 26
+
+                    case HakataExpressTimeData.midori_fiftyfour:
+                        hakataTimeTableListIndex = 27
+
+                    case HakataExpressTimeData.relaykamome_fiftysix:
+                        hakataTimeTableListIndex = 28
+
+                    case HakataExpressTimeData.midori_fiftyeight:
+                        hakataTimeTableListIndex = 29
+
+                    case HakataExpressTimeData.midori_sixty:
+                        hakataTimeTableListIndex = 30
+
+                    case HakataExpressTimeData.relaykamome_sixtytwo:
+                        hakataTimeTableListIndex = 31
+
+                    case HakataExpressTimeData.relaykamome_sixtyfour:
+                        hakataTimeTableListIndex = 32
                     default:
                         break
                     }
@@ -282,49 +315,70 @@ struct ContentView: View {
                     let minute = hh + mm
 
                     switch minute {
-                    case NagasakiTimeData.kamome_One:
+                    case NagasakiShinkansenTimeData.kamome_One:
                         nagasakiTimetableListIndex = 0
-                    case NagasakiTimeData.kamome_three:
+
+                    case NagasakiShinkansenTimeData.kamome_three:
                         nagasakiTimetableListIndex = 1
-                    case NagasakiTimeData.kamome_five:
+
+                    case NagasakiShinkansenTimeData.kamome_five:
                         nagasakiTimetableListIndex = 2
-                    case NagasakiTimeData.kamome_nine:
+
+                    case NagasakiShinkansenTimeData.kamome_nine:
                         nagasakiTimetableListIndex = 3
-                    case NagasakiTimeData.kamome_thirteen:
+
+                    case NagasakiShinkansenTimeData.kamome_thirteen:
                         nagasakiTimetableListIndex = 4
-                    case NagasakiTimeData.kamome_seventeen:
+
+                    case NagasakiShinkansenTimeData.kamome_seventeen:
                         nagasakiTimetableListIndex = 5
-                    case NagasakiTimeData.kamome_twenty_one:
+
+                    case NagasakiShinkansenTimeData.kamome_twenty_one:
                         nagasakiTimetableListIndex = 6
-                    case NagasakiTimeData.kamome_twenty_five:
+
+                    case NagasakiShinkansenTimeData.kamome_twenty_five:
                         nagasakiTimetableListIndex = 7
-                    case NagasakiTimeData.kamome_forty_nine:
+
+                    case NagasakiShinkansenTimeData.kamome_forty_nine:
                         nagasakiTimetableListIndex = 8
-                    case NagasakiTimeData.kamome_thirty_three:
+
+                    case NagasakiShinkansenTimeData.kamome_thirty_three:
                         nagasakiTimetableListIndex = 9
-                    case NagasakiTimeData.kamome_thirty_seven:
+
+                    case NagasakiShinkansenTimeData.kamome_thirty_seven:
                         nagasakiTimetableListIndex = 10
-                    case NagasakiTimeData.kamome_forty_one:
+
+                    case NagasakiShinkansenTimeData.kamome_forty_one:
                         nagasakiTimetableListIndex = 11
-                    case NagasakiTimeData.kamome_forty_three:
+
+                    case NagasakiShinkansenTimeData.kamome_forty_three:
                         nagasakiTimetableListIndex = 12
-                    case NagasakiTimeData.kamome_forty_five:
+
+                    case NagasakiShinkansenTimeData.kamome_forty_five:
                         nagasakiTimetableListIndex = 13
-                    case NagasakiTimeData.kamome_forty_seven:
+
+                    case NagasakiShinkansenTimeData.kamome_forty_seven:
                         nagasakiTimetableListIndex = 14
-                    case NagasakiTimeData.kamome_forty_nine:
+
+                    case NagasakiShinkansenTimeData.kamome_forty_nine:
                         nagasakiTimetableListIndex = 15
-                    case NagasakiTimeData.kamome_fifty_one:
+
+                    case NagasakiShinkansenTimeData.kamome_fifty_one:
                         nagasakiTimetableListIndex = 16
-                    case NagasakiTimeData.kamome_fifty_three:
+
+                    case NagasakiShinkansenTimeData.kamome_fifty_three:
                         nagasakiTimetableListIndex = 17
-                    case NagasakiTimeData.kamome_fifty_five:
+
+                    case NagasakiShinkansenTimeData.kamome_fifty_five:
                         nagasakiTimetableListIndex = 18
-                    case NagasakiTimeData.kamome_fifty_seven:
+
+                    case NagasakiShinkansenTimeData.kamome_fifty_seven:
                         nagasakiTimetableListIndex = 19
-                    case NagasakiTimeData.kamome_sixty_one:
+
+                    case NagasakiShinkansenTimeData.kamome_sixty_one:
                         nagasakiTimetableListIndex = 20
-                    case NagasakiTimeData.kamome_sixty_five:
+
+                    case NagasakiShinkansenTimeData.kamome_sixty_five:
                         nagasakiTimetableListIndex = 21
                     default:
                         break
