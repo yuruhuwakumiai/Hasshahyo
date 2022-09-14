@@ -119,14 +119,25 @@ struct ContentView: View {
                     Button(action: {
 
                     }) {
-                        Text("送り")
+                        Text("在来線のりば案内")
+                            .frame(width: 160, height: 40, alignment: .center)
                             .foregroundColor(.white)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.yellow, lineWidth: 2)
+                            )
+
                     }
                     Button(action: {
 
                     }) {
-                        Text("リセット")
+                        Text("特急列車座席表")
+                            .frame(width: 160, height: 40, alignment: .center)
                             .foregroundColor(.white)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.yellow, lineWidth: 2)
+                            )
                     }
                 }
                 .padding(100)
@@ -282,15 +293,20 @@ struct ContentView: View {
                     Button(action: {
 
                     }) {
-                        Text("送り")
+                        Text("")
                             .foregroundColor(.white)
                     }
 
                     Button(action: {
 
                     }) {
-                        Text("リセット")
+                        Text("新幹線座席表")
+                            .frame(width: 160, height: 40, alignment: .center)
                             .foregroundColor(.white)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.yellow, lineWidth: 2)
+                            )
                     }
                 }
                 .padding(100)
