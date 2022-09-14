@@ -339,7 +339,7 @@ struct ContentView: View {
                     case NagasakiShinkansenTimeData.kamome_twenty_five:
                         nagasakiTimetableListIndex = 7
 
-                    case NagasakiShinkansenTimeData.kamome_forty_nine:
+                    case NagasakiShinkansenTimeData.kamome_twenty_nine:
                         nagasakiTimetableListIndex = 8
 
                     case NagasakiShinkansenTimeData.kamome_thirty_three:
