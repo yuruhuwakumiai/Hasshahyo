@@ -12,7 +12,7 @@ extension Text {
     func h1Text(_ foregroundColor: Color) -> Text {
         self
             .foregroundColor(foregroundColor)
-            .font(.mainFont(size: 50))
+            .font(.mainFont(size: 48))
             .fontWeight(.heavy)
     }
 
