@@ -27,6 +27,7 @@ struct ContentView: View {
     @State private var nowDate = Date()
     @State private var hakataTimeTableListIndex = 0
     @State private var nagasakiTimetableListIndex = 0
+    @State private var isshowPlathomeAnounceView = false
 
     // 9/12　確認（hashimoto/shirai）
     @State private var hakataTimeTableList:[TimeTable] = [
@@ -117,6 +118,7 @@ struct ContentView: View {
                 }
                 HStack {
                     Button(action: {
+                        isshowPlathomeAnounceView = true
 
                     }) {
                         Text("在来線のりば案内")
@@ -127,6 +129,9 @@ struct ContentView: View {
                                     .stroke(Color.yellow, lineWidth: 2)
                             )
 
+                    }
+                    .fullScreenCover (isPresented: $isshowPlathomeAnounceView) {
+                        PlathomeAnounceView()
                     }
                     Button(action: {
 

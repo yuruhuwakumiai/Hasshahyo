@@ -16,6 +16,7 @@
 		099D2AE428B89E0F0095BB92 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 099D2AE328B89E0F0095BB92 /* Preview Assets.xcassets */; };
 		099D2AF128BC9B4B0095BB92 /* JF-Dot-Izumi16B.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 099D2AF028BC9B4B0095BB92 /* JF-Dot-Izumi16B.ttf */; };
 		09EF4F3228D4AAB9006E969E /* PlathomeAnounceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EF4F3128D4AAB9006E969E /* PlathomeAnounceView.swift */; };
+		09EF4F3628D51848006E969E /* Background.swift in Sources */ = {isa = PBXBuildFile; fileRef = 09EF4F3528D51848006E969E /* Background.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		099D2AF028BC9B4B0095BB92 /* JF-Dot-Izumi16B.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "JF-Dot-Izumi16B.ttf"; sourceTree = "<group>"; };
 		099D2AF228BC9B6F0095BB92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		09EF4F3128D4AAB9006E969E /* PlathomeAnounceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlathomeAnounceView.swift; sourceTree = "<group>"; };
+		09EF4F3528D51848006E969E /* Background.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Background.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +100,7 @@
 		099D2AEA28BC6F240095BB92 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				09EF4F3428D4B55D006E969E /* Background */,
 				0984DEE828C846B0009D431D /* DataConstant */,
 				090A4E6B28C16433009A5A81 /* Extension */,
 				099D2AEC28BC6F4B0095BB92 /* View */,
@@ -130,6 +133,14 @@
 				099D2AE028B89E0F0095BB92 /* Assets.xcassets */,
 			);
 			path = Resource;
+			sourceTree = "<group>";
+		};
+		09EF4F3428D4B55D006E969E /* Background */ = {
+			isa = PBXGroup;
+			children = (
+				09EF4F3528D51848006E969E /* Background.swift */,
+			);
+			path = Background;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -205,6 +216,7 @@
 			files = (
 				0984DEEA28C8476E009D431D /* TimeChangeData.swift in Sources */,
 				099D2ADF28B89E0E0095BB92 /* ContentView.swift in Sources */,
+				09EF4F3628D51848006E969E /* Background.swift in Sources */,
 				099D2ADD28B89E0E0095BB92 /* HasshahyoApp.swift in Sources */,
 				090A4E7328C165AA009A5A81 /* Text-Extension.swift in Sources */,
 				09EF4F3228D4AAB9006E969E /* PlathomeAnounceView.swift in Sources */,
