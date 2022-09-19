@@ -130,7 +130,7 @@ struct ContentView: View {
                             )
 
                     }
-                    .fullScreenCover (isPresented: $isshowPlathomeAnounceView) {
+                    .sheet (isPresented: $isshowPlathomeAnounceView) {
                         PlathomeAnounceView()
                     }
                     Button(action: {
