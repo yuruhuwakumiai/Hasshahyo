@@ -16,9 +16,12 @@ struct ShinkansenSheetGuideView: View {
             SheetSelectButton(buttonAction: reservedButtonAction, text: "指定席")
             SheetSelectButton(buttonAction: nonReservedButtonAction, text: "自由席")
         }
+        .fullScreenCover(isPresented: $isShowReservedSheetView) {
+            ReservedSheetView()
+        }
     }
-   private func reservedButtonAction() { isShowReservedSheetView = true }
-   private func nonReservedButtonAction() { isShowNonReservedSheetView = true }
+    func reservedButtonAction() { isShowReservedSheetView = true }
+    func nonReservedButtonAction() { isShowNonReservedSheetView = true }
 }
 
 struct SheetSelectButton: View {
