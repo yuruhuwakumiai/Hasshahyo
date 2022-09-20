@@ -116,6 +116,7 @@ struct ContentView: View {
                     .listRowBackground(Color.black)
                     .frame(height : 200)
                 }
+                .listBackground(.clear)
                 HStack {
                     Button(action: {
                         isshowPlathomeAnounceView = true

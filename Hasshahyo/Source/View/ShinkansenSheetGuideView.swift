@@ -8,21 +8,34 @@
 import SwiftUI
 
 struct ShinkansenSheetGuideView: View {
+    @State var isShowReservedSheetView = false
+    @State var isShowNonReservedSheetView = false
 
     var body: some View {
         VStack {
-            Button(action: {
-                print("指定席/自由席切り替え")
-            }) {
-                Text("指定席/切り替え")
-                    .frame(width: 200, height: 40, alignment: .center)
-                    .foregroundColor(.black)
-                    .overlay(
-                        RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color.yellow, lineWidth: 2)
-                        )
-            }
-            Image("nonreserved")
+            SheetSelectButton(buttonAction: reservedButtonAction, text: "指定席")
+            SheetSelectButton(buttonAction: nonReservedButtonAction, text: "自由席")
+        }
+    }
+   private func reservedButtonAction() { isShowReservedSheetView = true }
+   private func nonReservedButtonAction() { isShowNonReservedSheetView = true }
+}
+
+struct SheetSelectButton: View {
+    let buttonAction: () -> Void
+    let text: String
+
+    var body: some View {
+        Button(action: {
+            buttonAction()
+        }) {
+            Text(text)
+                .frame(width: 200, height: 40, alignment: .center)
+                .foregroundColor(.black)
+                .overlay(
+                    RoundedRectangle(cornerRadius: 20)
+                        .stroke(Color.yellow, lineWidth: 2)
+                    )
         }
     }
 }

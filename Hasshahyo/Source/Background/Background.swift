@@ -18,3 +18,11 @@ struct BackgroundView<T: View>: View {
             }
     }
 }
+
+extension List {
+
+    func listBackground(_ color: Color) -> some View {
+        UITableView.appearance().backgroundColor = UIColor(color)
+        return self
+    }
+}
