@@ -14,10 +14,14 @@ struct ShinkansenSheetGuideView: View {
     var body: some View {
         VStack {
             SheetSelectButton(buttonAction: reservedButtonAction, text: "指定席")
+                .fullScreenCover(isPresented: $isShowReservedSheetView) {
+                    ReservedSheetView()
+                }
             SheetSelectButton(buttonAction: nonReservedButtonAction, text: "自由席")
-        }
-        .fullScreenCover(isPresented: $isShowReservedSheetView) {
-            ReservedSheetView()
+                .fullScreenCover(isPresented: $isShowNonReservedSheetView) {
+                    NonReservedSheetView()
+                }
+
         }
     }
     func reservedButtonAction() { isShowReservedSheetView = true }
@@ -27,7 +31,7 @@ struct ShinkansenSheetGuideView: View {
 struct SheetSelectButton: View {
     let buttonAction: () -> Void
     let text: String
-
+    
     var body: some View {
         Button(action: {
             buttonAction()
@@ -38,7 +42,7 @@ struct SheetSelectButton: View {
                 .overlay(
                     RoundedRectangle(cornerRadius: 20)
                         .stroke(Color.yellow, lineWidth: 2)
-                    )
+                )
         }
     }
 }

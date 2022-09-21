@@ -8,8 +8,16 @@
 import SwiftUI
 
 struct NonReservedSheetView: View {
+    @Environment(\.dismiss) var dismiss
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Image("nonreserved")
+        Button(action: {
+            dismiss()
+        }) {
+            Text("戻る")
+        }
+
     }
 }
 
