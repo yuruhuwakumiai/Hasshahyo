@@ -13,6 +13,8 @@
 		0984DEEA28C8476E009D431D /* TimeChangeData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0984DEE928C8476E009D431D /* TimeChangeData.swift */; };
 		099540E828D9EDC000D82620 /* ReservedSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099540E728D9EDC000D82620 /* ReservedSheetView.swift */; };
 		099540EA28D9EDCF00D82620 /* NonReservedSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099540E928D9EDCF00D82620 /* NonReservedSheetView.swift */; };
+		099540ED28DB35DD00D82620 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099540EC28DB35DD00D82620 /* WebView.swift */; };
+		099540EF28DB37F100D82620 /* SheetMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099540EE28DB37F100D82620 /* SheetMapView.swift */; };
 		099D2ADD28B89E0E0095BB92 /* HasshahyoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D2ADC28B89E0E0095BB92 /* HasshahyoApp.swift */; };
 		099D2ADF28B89E0E0095BB92 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 099D2ADE28B89E0E0095BB92 /* ContentView.swift */; };
 		099D2AE128B89E0F0095BB92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 099D2AE028B89E0F0095BB92 /* Assets.xcassets */; };
@@ -29,6 +31,8 @@
 		0984DEE928C8476E009D431D /* TimeChangeData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeChangeData.swift; sourceTree = "<group>"; };
 		099540E728D9EDC000D82620 /* ReservedSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservedSheetView.swift; sourceTree = "<group>"; };
 		099540E928D9EDCF00D82620 /* NonReservedSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NonReservedSheetView.swift; sourceTree = "<group>"; };
+		099540EC28DB35DD00D82620 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		099540EE28DB37F100D82620 /* SheetMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetMapView.swift; sourceTree = "<group>"; };
 		099D2AD928B89E0E0095BB92 /* Hasshahyo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Hasshahyo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		099D2ADC28B89E0E0095BB92 /* HasshahyoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HasshahyoApp.swift; sourceTree = "<group>"; };
 		099D2ADE28B89E0E0095BB92 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,6 +70,14 @@
 				0984DEE928C8476E009D431D /* TimeChangeData.swift */,
 			);
 			path = DataConstant;
+			sourceTree = "<group>";
+		};
+		099540EB28DB35A300D82620 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				099540EC28DB35DD00D82620 /* WebView.swift */,
+			);
+			path = Web;
 			sourceTree = "<group>";
 		};
 		099D2AD028B89E0E0095BB92 = {
@@ -106,6 +118,7 @@
 		099D2AEA28BC6F240095BB92 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				099540EB28DB35A300D82620 /* Web */,
 				09EF4F3428D4B55D006E969E /* Background */,
 				0984DEE828C846B0009D431D /* DataConstant */,
 				090A4E6B28C16433009A5A81 /* Extension */,
@@ -131,6 +144,7 @@
 				094C151528D857FA007421FE /* ShinkansenSheetGuideView.swift */,
 				099540E728D9EDC000D82620 /* ReservedSheetView.swift */,
 				099540E928D9EDCF00D82620 /* NonReservedSheetView.swift */,
+				099540EE28DB37F100D82620 /* SheetMapView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -228,7 +242,9 @@
 				09EF4F3628D51848006E969E /* Background.swift in Sources */,
 				099D2ADD28B89E0E0095BB92 /* HasshahyoApp.swift in Sources */,
 				099540EA28D9EDCF00D82620 /* NonReservedSheetView.swift in Sources */,
+				099540ED28DB35DD00D82620 /* WebView.swift in Sources */,
 				099540E828D9EDC000D82620 /* ReservedSheetView.swift in Sources */,
+				099540EF28DB37F100D82620 /* SheetMapView.swift in Sources */,
 				090A4E7328C165AA009A5A81 /* Text-Extension.swift in Sources */,
 				094C151628D857FA007421FE /* ShinkansenSheetGuideView.swift in Sources */,
 				09EF4F3228D4AAB9006E969E /* PlathomeAnounceView.swift in Sources */,

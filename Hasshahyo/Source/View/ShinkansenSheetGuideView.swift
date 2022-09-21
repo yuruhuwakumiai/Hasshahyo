@@ -12,7 +12,7 @@ struct ShinkansenSheetGuideView: View {
     @State var isShowNonReservedSheetView = false
 
     var body: some View {
-        VStack {
+        VStack (spacing: 30) {
             SheetSelectButton(buttonAction: reservedButtonAction, text: "指定席")
                 .fullScreenCover(isPresented: $isShowReservedSheetView) {
                     ReservedSheetView()
@@ -21,9 +21,9 @@ struct ShinkansenSheetGuideView: View {
                 .fullScreenCover(isPresented: $isShowNonReservedSheetView) {
                     NonReservedSheetView()
                 }
-
         }
     }
+
     func reservedButtonAction() { isShowReservedSheetView = true }
     func nonReservedButtonAction() { isShowNonReservedSheetView = true }
 }

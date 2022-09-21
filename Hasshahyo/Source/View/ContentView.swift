@@ -29,6 +29,7 @@ struct ContentView: View {
     @State private var nagasakiTimetableListIndex = 0
     @State private var isshowPlathomeAnounceView = false
     @State private var isshowShinkansenSheetView = false
+    @State private var isshowSheetMapView = false
 
     // 9/12　確認（hashimoto/shirai）
     @State private var hakataTimeTableList:[TimeTable] = [
@@ -136,7 +137,7 @@ struct ContentView: View {
                         PlathomeAnounceView()
                     }
                     Button(action: {
-
+                        isshowSheetMapView = true
                     }) {
                         Text("特急列車座席表")
                             .frame(width: 160, height: 40, alignment: .center)
@@ -145,6 +146,9 @@ struct ContentView: View {
                                 RoundedRectangle(cornerRadius: 20)
                                     .stroke(Color.yellow, lineWidth: 2)
                             )
+                    }
+                    .fullScreenCover(isPresented: $isshowSheetMapView) {
+                        SheetMapView()
                     }
                 }
                 .padding(100)
@@ -307,7 +311,7 @@ struct ContentView: View {
                     Button(action: {
                         isshowShinkansenSheetView = true
                     }) {
-                        Text("新幹線座席表")
+                        Text("新幹線座席イメージ")
                             .frame(width: 160, height: 40, alignment: .center)
                             .foregroundColor(.white)
                             .overlay(

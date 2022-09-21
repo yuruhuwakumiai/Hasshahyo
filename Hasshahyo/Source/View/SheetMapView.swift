@@ -1,21 +1,18 @@
 //
-//  ReservedSheetView.swift
+//  SheetMapView.swift
 //  Hasshahyo
 //
-//  Created by 橋元雄太郎 on 2022/09/20.
+//  Created by 橋元雄太郎 on 2022/09/21.
 //
 
 import SwiftUI
 
-struct ReservedSheetView: View {
+struct SheetMapView: View {
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
-
         VStack {
-            Image("reserved")
-                .resizable()
-                .frame(width: UIScreen.main.bounds.width/1.2, height: UIScreen.main.bounds.width/1.7, alignment: .center)
+            WebView()
             Button(action: {
                 dismiss()
             }) {
@@ -26,13 +23,13 @@ struct ReservedSheetView: View {
                         RoundedRectangle(cornerRadius: 20)
                             .stroke(Color.yellow, lineWidth: 2))
             }
+            .padding(.bottom, 15)
         }
     }
 }
 
-struct ReservedSheetView_Previews: PreviewProvider {
+struct SheetMapView_Previews: PreviewProvider {
     static var previews: some View {
-        ReservedSheetView()            .previewInterfaceOrientation(.landscapeRight)
-
+        SheetMapView()
     }
 }
