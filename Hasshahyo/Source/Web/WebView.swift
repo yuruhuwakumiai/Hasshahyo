@@ -8,7 +8,7 @@ import SwiftUI
 import WebKit //WebKitをインポート
 
 struct WebView: UIViewRepresentable {
-    var url: String = "https://1drv.ms/u/s!AvkIKC9_EOn42jPnNvn6UPk0e0QE?e=iPgaj8" //表示するWEBページのURLを指定
+    var url: String = URLStringFile.SheetOnedrive //表示するWEBページのURLを指定
 
     func makeUIView(context: Context) -> WKWebView{
         return WKWebView()

@@ -155,6 +155,7 @@ struct ContentView: View {
             }
             .background(Color("main_blue"))
             .onAppear {
+                // MARK: Xcode14で動かないバグ？？　背景がクリアにならない
                 UITableView.appearance().backgroundColor = .clear
                 /// initは使わない
                 dateFormatter.dateFormat = "HH:mm"

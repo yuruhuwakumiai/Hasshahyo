@@ -12,7 +12,7 @@ struct SheetMapView: View {
 
     var body: some View {
         VStack {
-            WebView()
+            WebView() // WEB を表示
             Button(action: {
                 dismiss()
             }) {
@@ -30,6 +30,6 @@ struct SheetMapView: View {
 
 struct SheetMapView_Previews: PreviewProvider {
     static var previews: some View {
-        SheetMapView()
+        SheetMapView().previewInterfaceOrientation(.landscapeRight)
     }
 }

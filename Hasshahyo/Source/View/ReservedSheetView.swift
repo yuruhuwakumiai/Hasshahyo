@@ -32,7 +32,6 @@ struct ReservedSheetView: View {
 
 struct ReservedSheetView_Previews: PreviewProvider {
     static var previews: some View {
-        ReservedSheetView()            .previewInterfaceOrientation(.landscapeRight)
-
+        ReservedSheetView().previewInterfaceOrientation(.landscapeRight)
     }
 }
