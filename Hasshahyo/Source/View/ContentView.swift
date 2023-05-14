@@ -122,7 +122,6 @@ struct ContentView: View {
                 HStack {
                     Button(action: {
                         isshowPlathomeAnounceView = true
-
                     }) {
                         Text("在来線のりば案内")
                             .frame(width: 160, height: 40, alignment: .center)
@@ -131,7 +130,6 @@ struct ContentView: View {
                                 RoundedRectangle(cornerRadius: 20)
                                     .stroke(Color.yellow, lineWidth: 2)
                             )
-
                     }
                     .sheet (isPresented: $isshowPlathomeAnounceView) {
                         PlathomeAnounceView()

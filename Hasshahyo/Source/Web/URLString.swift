@@ -8,5 +8,5 @@
 import SwiftUI
 
 struct URLStringFile {
-    static let SheetOnedrive = "https://1drv.ms/u/s!AvkIKC9_EOn42jPnNvn6UPk0e0QE?e=iPgaj8"
+    static let SheetOnedrive = ""
 }
