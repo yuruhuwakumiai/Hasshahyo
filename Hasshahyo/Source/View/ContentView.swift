@@ -14,7 +14,6 @@ struct TimeTable: Identifiable {
     var departure: String
     var platform: String
 }
-
 // 佐世保線ローカル作成
 struct SaseboUpTimeData {
 
@@ -119,6 +118,7 @@ struct ContentView: View {
                     .frame(height : 200)
                 }
                 .listBackground(.clear)
+                .listStyle(PlainListStyle())
                 HStack {
                     Button(action: {
                         isshowPlathomeAnounceView = true
@@ -301,6 +301,8 @@ struct ContentView: View {
                     .listRowBackground(Color.black)
                     .frame(height : 200)
                 }
+                .listBackground(.clear)
+                .listStyle(PlainListStyle())
                 HStack {
                     Button(action: {
 
